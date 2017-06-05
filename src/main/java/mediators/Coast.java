@@ -1,6 +1,6 @@
 package mediators;
 
-public class Coast
+public class Coast extends AbstractMediator
 {
    
 }

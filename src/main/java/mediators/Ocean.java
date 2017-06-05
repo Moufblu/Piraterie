@@ -1,6 +1,6 @@
 package mediators;
 
-public class Ocean
+public class Ocean extends AbstractMediator
 {
    
 }

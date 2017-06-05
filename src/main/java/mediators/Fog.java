@@ -1,6 +1,6 @@
 package mediators;
 
-public class Fog
+public class Fog extends AbstractMediator
 {
    
 }
