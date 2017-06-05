@@ -15,12 +15,12 @@ public class Merchant extends Ship
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
    
-   public void deposit()
+   public void wantTodeposit()
    {
       
    }
    
-   public void collect(int money)
+   public void wantToCollect(int money)
    {
       
    }

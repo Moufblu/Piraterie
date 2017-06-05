@@ -2,7 +2,7 @@ package ships;
 
 import mediators.AbstractMediator;
 
-public class Corsair extends Ship
+public class Corsair extends Ship implements Attacker
 {
    protected Corsair(AbstractMediator mediator, int capacity, int speed, int rangeView)
    {
@@ -14,5 +14,9 @@ public class Corsair extends Ship
    {
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
-   
+
+   @Override
+   public void attack() {
+
+   }
 }
