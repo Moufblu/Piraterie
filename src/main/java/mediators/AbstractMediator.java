@@ -1,46 +1,29 @@
 package mediators;
 
 import java.awt.Point;
-import java.util.List;
 import ships.Attacker;
-import ships.BlackBeard;
 import ships.Corsair;
-import ships.King;
-import ships.Merchant;
 import ships.Pirate;
 import ships.Ship;
 
 public abstract class AbstractMediator {
 
-   protected List<Corsair> corsairs;
-   protected List<Merchant> merchants;
-   protected List<Pirate> pirates;
-   protected BlackBeard blackBeard;
-   protected King king;
+   private final GreatMediator greatMediator;
 
-   static GreatMediator greatMediator;
+   protected final double speedModifier;
 
-   static {
-      greatMediator = new GreatMediator();
+   public AbstractMediator(GreatMediator greatMediator, double speedModifier) {
+      this.greatMediator = greatMediator;
+      this.speedModifier = speedModifier;
    }
-
-   public AbstractMediator(List<Corsair> corsairs, List<Merchant> merchants, List<Pirate> pirates) {
-      this.corsairs = corsairs;
-      this.merchants = merchants;
-      this.pirates = pirates;
+   
+   void wantToAttack(Pirate pirate){
+      greatMediator.findClosest(ShipType);
+   }
+   
+   void wantToAttack(Corsair corsair){
       
    }
-   
-   
-   
-   double getSpeedModifier() {
-      return 1.0;
-   }
-
-   abstract void move(Ship ship);
-
-   abstract void wantToAttack(Attacker attacker);
 
    abstract void returnToBase(Point base);
-
 }
