@@ -17,5 +17,5 @@ public abstract class Ship
       this.mediator = mediator;
    }
    
-   abstract void action();
+   abstract void move();
 }
