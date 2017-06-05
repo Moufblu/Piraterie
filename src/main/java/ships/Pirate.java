@@ -14,7 +14,7 @@ public class Pirate extends Ship implements Attacker
    {
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
-   
+
    @Override
    public void attack() {
 
