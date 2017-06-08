@@ -1,10 +1,9 @@
 package mediators;
 
 import java.awt.Point;
-import ships.Attacker;
+import mediators.GreatMediator.ShipType;
 import ships.Corsair;
 import ships.Pirate;
-import ships.Ship;
 
 public abstract class AbstractMediator {
 
@@ -18,7 +17,7 @@ public abstract class AbstractMediator {
    }
    
    void wantToAttack(Pirate pirate){
-      greatMediator.findClosest(ShipType);
+      greatMediator.getClosest(pirate, ShipType.MERCHANT);
    }
    
    void wantToAttack(Corsair corsair){

@@ -4,6 +4,7 @@ import mediators.AbstractMediator;
 
 public abstract class Ship
 {
+   private int x, y;
    private final int CAPACITY;
    private int speed,
                rangeView;
@@ -15,6 +16,10 @@ public abstract class Ship
       this.speed = speed;
       this.rangeView = rangeView;
       this.mediator = mediator;
+   }
+   
+   public int distanceTo(Ship s){
+      return Math.abs(x - s.x) + Math.abs(y - s.y);
    }
    
    abstract void move();
