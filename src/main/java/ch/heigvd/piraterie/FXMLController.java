@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import mediators.GreatMediator;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,7 +28,8 @@ public class FXMLController implements Initializable {
 
 
     public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
-    
+    private GreatMediator greatMediator;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //gamePane.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
@@ -60,4 +62,8 @@ public class FXMLController implements Initializable {
             }
         }
     }
+
+    public void updateBoats(){
+    }
+
 }
