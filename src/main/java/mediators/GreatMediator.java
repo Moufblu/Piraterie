@@ -2,12 +2,9 @@ package mediators;
 
 import java.util.ArrayList;
 import java.util.List;
-import ships.BlackBeard;
-import ships.Corsair;
-import ships.King;
-import ships.Merchant;
-import ships.Pirate;
-import ships.Ship;
+
+import ships.*;
+
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Optional;
