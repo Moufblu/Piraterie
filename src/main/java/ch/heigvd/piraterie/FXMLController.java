@@ -148,13 +148,21 @@ public class FXMLController implements Initializable {
     {
        while (true)
        {
-          greatMediator.getShips().stream().forEach((ships) ->
-         {
-            ships.stream().forEach((ship) ->
-            {
-               ship.run();
-            });
-         });
+          for (List<Ship> ships : greatMediator.getShips())
+          {
+             for (Iterator<Ship> iterator = ships.iterator(); iterator.hasNext();)
+             {
+                Ship ship = iterator.next();
+                if (ship.getHp() == 0)
+                {
+                   iterator.remove();
+                   continue;
+                }
+                
+                ship.run();
+             }
+             
+          }
 
          updateBoats();
        }
