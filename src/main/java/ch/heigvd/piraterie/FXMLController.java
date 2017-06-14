@@ -5,13 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import mediators.GreatMediator;
+import ships.Ship;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.List;
 
 import static constants.PirateConstants.*;
 import static constants.PirateConstants.terrainType.*;
@@ -27,13 +30,14 @@ public class FXMLController implements Initializable {
 
 
     public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
-    
+    private GreatMediator greatMediator;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //gamePane.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         BufferedImage map = null;
         try{
-            map = ImageIO.read(new java.io.File("../img/example_map.bmp"));
+            map = ImageIO.read(new java.io.File("src/main/resources/img/example_map.bmp"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,11 +63,12 @@ public class FXMLController implements Initializable {
                 }
             }
         }
-
-        for( int i = 0; i < terrainMatrix.length; i++ )
-            for (int j = 0; j < terrainMatrix[0].length; j++)
-                System.out.println(terrainMatrix[i][j]);
-
-        System.out.println("TEST");
     }
+
+    public void updateBoats(){
+        for(List<Ship> l : greatMediator.getShips()){
+            
+        }
+    }
+
 }
