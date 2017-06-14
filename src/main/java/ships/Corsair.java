@@ -1,5 +1,6 @@
 package ships;
 
+import constants.PirateConstants;
 import mediators.GreatMediator;
 import utils.Position;
 
@@ -57,6 +58,6 @@ public class Corsair extends RobbingShip {
 
    @Override
    public Position getBase() {
-      return new Position(200,200);
+      return new Position(0 ,PirateConstants.MAP_HEIGHT / 2);
    }
 }

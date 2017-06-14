@@ -1,5 +1,6 @@
 package ships;
 
+import constants.PirateConstants;
 import utils.Position;
 import mediators.GreatMediator;
 import javafx.scene.paint.Color;
@@ -56,6 +57,6 @@ public class Pirate extends RobbingShip {
 
    @Override
    public Position getBase() {
-      return new Position(400,400);
+      return new Position(PirateConstants.MAP_WIDTH / 2, PirateConstants.MAP_HEIGHT - 1);
    }
 }

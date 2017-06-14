@@ -85,4 +85,8 @@ public abstract class Ship
    }
 
    abstract public Position getBase();
+   
+   public Position getSpawn(){
+      return getBase();
+   }
 }

@@ -7,7 +7,7 @@ import utils.Position;
 public class Fog extends AbstractMediator
 {
 
-   private final double CHANCE_TO_SUCCEED_MOVE = 30; // 30%
+   private final double CHANCE_TO_FAIL_MOVE = 10; // 30%
 
    public Fog(double speedZone, double sightModifier) {
       super(speedZone, sightModifier);
@@ -23,9 +23,12 @@ public class Fog extends AbstractMediator
    @Override
    public void move(Ship s, Position destination) {
       
-      destination = new Position(PirateConstants.RANDOM.nextInt(PirateConstants.MAP_WIDTH),
-              PirateConstants.RANDOM.nextInt(PirateConstants.MAP_HEIGHT));
+      int chance = PirateConstants.RANDOM.nextInt(100);
       
+      if(chance < CHANCE_TO_FAIL_MOVE){
+         destination = new Position(PirateConstants.RANDOM.nextInt(PirateConstants.MAP_WIDTH),
+              PirateConstants.RANDOM.nextInt(PirateConstants.MAP_HEIGHT));
+      }
       super.move(s, destination);
    }
 

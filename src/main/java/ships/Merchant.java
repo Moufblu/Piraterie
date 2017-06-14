@@ -1,5 +1,6 @@
 package ships;
 
+import constants.PirateConstants;
 import utils.Position;
 import mediators.GreatMediator;
 
@@ -48,10 +49,18 @@ public class Merchant extends Ship
    }
 
    @Override
-   public Color getColor(){ return Color.YELLOW; }
+   public Color getColor(){ return Color.ORANGE; }
 
    @Override
    public Position getBase() {
-      return new Position(300,300);
+      return new Position(PirateConstants.MAP_WIDTH - 1, PirateConstants.MAP_HEIGHT / 2);
    }
+
+   @Override
+   public Position getSpawn()
+   {
+      return new Position(0 ,PirateConstants.MAP_HEIGHT / 2);
+   }
+   
+   
 }
