@@ -17,4 +17,12 @@ public abstract class AbstractMediator {
     }
 
     abstract void move(Ship s, Point destinationPosition);
+
+    private Point getNextPointRandom(Ship s) {
+        double bool = random.nextInt(1);
+        double sign = random.nextInt(1)*-1;
+        double newX = s.getPosition().getX() + (bool * sign);
+        double newY = s.getPosition().getY() + (1-bool)*sign;
+        return new Point(newX, newY);
+    }
 }
