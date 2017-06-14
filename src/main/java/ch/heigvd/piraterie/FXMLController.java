@@ -216,8 +216,8 @@ public class FXMLController implements Initializable
    {
       Platform.runLater(() ->
       {
-         merchantProgressBar.setProgress(greatMediator.getMerchantTreasure()/treasureGoal);
-         pirateProgressBar.setProgress(greatMediator.getPirateTreasure()/treasureGoal);
+         merchantProgressBar.setProgress(greatMediator.getMerchantTreasure()/(double)treasureGoal);
+         pirateProgressBar.setProgress(greatMediator.getPirateTreasure()/(double)treasureGoal);
          merchantProgressLabel.setText(Integer.toString(greatMediator.getMerchantTreasure()));
          pirateProgressLabel.setText(Integer.toString(greatMediator.getPirateTreasure()));
          
