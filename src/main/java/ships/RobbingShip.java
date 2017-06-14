@@ -22,7 +22,7 @@ public abstract class RobbingShip extends Ship
       return treasure;
    }
    
-   public double getAttackPower(){
+   public int getAttackPower(){
       return ATTACK;
    }
 }
