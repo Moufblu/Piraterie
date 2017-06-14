@@ -30,8 +30,12 @@ public class Point{
    public void setY(int y) {
       this.y = y;
    }
-   
+
    public int distanceTo(Point s){
       return Math.abs(x - s.x) + Math.abs(y - s.y);
+   }
+   public Point nextPoint(Point destination){
+      double newX = Math.min(x, destination.getX());
+      return new Point(0,0);
    }
 }
