@@ -9,7 +9,7 @@ public class Merchant extends Ship
 {
    private final static int BOUND_HP_MAX = 100;
    private final static int BOUND_CAPACITY = 100;
-   private final static int BOUND_SPEED = 2;
+   private final static int BOUND_SPEED = 1;
    private final static int BOUND_RANGE_VIEW = 3;
    
    public Merchant(GreatMediator mediator, Point position)

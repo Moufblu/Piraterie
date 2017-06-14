@@ -38,11 +38,10 @@ public abstract class Ship
 
    protected static int randomBetween(int min, int max)
    {
-      int random = rand.nextInt(max - min) + min;
-      if (random == 0)
+      if (min == max)
          return min;
       
-      return random;
+      return rand.nextInt(max - min) + min;
    }
    
    public abstract void run();

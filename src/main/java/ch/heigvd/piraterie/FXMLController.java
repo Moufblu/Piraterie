@@ -21,6 +21,8 @@ import static constants.PirateConstants.*;
 import static constants.PirateConstants.terrainType.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import mediators.*;
@@ -45,6 +47,8 @@ public class FXMLController implements Initializable {
     private TextField pirateTextField;
     @FXML
     private TextField corsairTextField;
+    @FXML
+    private TextField treasureTextField;
 
     public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
     private GreatMediator greatMediator;
@@ -80,6 +84,14 @@ public class FXMLController implements Initializable {
                 }
             }
         }
+        
+        // Les textViews ne doivent prendre que des entiers
+        acceptOnlyNumbers(pirateTextField);
+        acceptOnlyNumbers(corsairTextField);
+        acceptOnlyNumbers(merchantTextField);
+        acceptOnlyNumbers(treasureTextField);
+        
+        // On prépare les médiateurs et les bateaux avant de commencer la simulation
         
         startButton.setOnAction(e ->       
         {
@@ -122,6 +134,15 @@ public class FXMLController implements Initializable {
            //loop de la simulation
            loop();
            
+        });
+    }
+    
+    private void acceptOnlyNumbers(TextField tf)
+    {
+       tf.textProperty().addListener((observable, oldValue, newValue) ->
+        {
+           if (!newValue.matches("\\d*"))
+               tf.setText(newValue.replaceAll("[^\\d]", ""));
         });
     }
     
