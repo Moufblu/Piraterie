@@ -26,8 +26,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchant gold" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirate gold" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchant gold" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirate gold" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <GridPane GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,8 +37,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ProgressBar fx:id="merchantProgressBar" maxWidth="-Infinity" prefWidth="150.0" progress="0.0" />
-                  <Label fx:id="merchantProgressLabel" text="Label" GridPane.columnIndex="1" />
+                  <ProgressBar fx:id="merchantProgressBar" maxWidth="-Infinity" prefWidth="150.0" progress="0.0" GridPane.halignment="CENTER" />
+                  <Label fx:id="merchantProgressLabel" prefHeight="17.0" prefWidth="31.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
@@ -53,7 +53,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ProgressBar fx:id="pirateProgressBar" maxWidth="-Infinity" prefWidth="150.0" progress="0.0" />
+                  <ProgressBar fx:id="pirateProgressBar" maxWidth="-Infinity" prefWidth="150.0" progress="0.0" GridPane.halignment="CENTER" />
                   <Label fx:id="pirateProgressLabel" text="Label" GridPane.columnIndex="1" />
                </children>
             </GridPane>
@@ -63,7 +63,8 @@
    <right>
       <GridPane fx:id="configurationPane" prefHeight="339.0" prefWidth="100.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -79,17 +80,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="merchantTextField" GridPane.rowIndex="1" />
-            <TextField fx:id="pirateTextField" GridPane.rowIndex="3" />
-            <TextField fx:id="corsairTextField" GridPane.rowIndex="5" />
-            <Slider fx:id="gameSpeedSlider" GridPane.rowIndex="9" />
-            <Button fx:id="startButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Start simulation" GridPane.rowIndex="10" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game speed" GridPane.rowIndex="8" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Treasure goal" GridPane.rowIndex="6" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Corsairs" GridPane.rowIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirates" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchants" />
-            <TextField fx:id="treasureTextField" GridPane.rowIndex="7" />
+            <TextField fx:id="merchantTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="pirateTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="corsairTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Slider fx:id="gameSpeedSlider" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Button fx:id="startButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Start simulation" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game speed" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Treasure goal" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Corsairs" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirates" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchants" GridPane.columnIndex="1" />
+            <TextField fx:id="treasureTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" />
