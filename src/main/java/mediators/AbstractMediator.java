@@ -4,15 +4,16 @@ import ships.RobbingShip;
 import ships.Ship;
 import utils.Position;
 
+
 public abstract class AbstractMediator {
 
-   protected final double speedZone;
-   protected final double sightModifier;
+    protected final double speedZone;
+    protected final double sightModifier;
 
-   public AbstractMediator(double speedZone, double sightModifier) {
-      this.speedZone = speedZone;
-      this.sightModifier = sightModifier;
-   }
+    public AbstractMediator(double speedZone, double sightModifier) {
+        this.speedZone = speedZone;
+        this.sightModifier = sightModifier;
+    }
 
    public void move(Ship s, Position destination){
       double signX = Math.signum(destination.getXDouble()- s.getPosition().getXDouble());      
@@ -26,11 +27,12 @@ public abstract class AbstractMediator {
       }
    }
 
-   boolean isInRange(RobbingShip s, Ship shipToAttack) {
-      return (s.distanceTo(shipToAttack) * sightModifier < s.getRangeView());
-   }
+    boolean isInRange(RobbingShip s, Ship shipToAttack) {
+        return (s.distanceTo(shipToAttack)*sightModifier < s.getRangeView());
+    }
 
-   void attack(RobbingShip s, Ship shipToAttack) {
-      shipToAttack.setHp(shipToAttack.getHp() - s.getATTACK());
-   }
+    void attack(RobbingShip s, Ship shipToAttack){
+        shipToAttack.setHp(shipToAttack.getHp()-s.getAttack());
+    }
+
 }
