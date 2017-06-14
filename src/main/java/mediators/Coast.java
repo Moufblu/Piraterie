@@ -6,8 +6,8 @@ import utils.Point;
 public class Coast extends AbstractMediator
 {
 
-   public Coast(double speedModifier,double sightModifier) {
-      super( speedModifier,sightModifier);
+   public Coast(double speedZone,double sightModifier) {
+      super( speedZone,sightModifier);
    }
 
    @Override

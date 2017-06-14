@@ -6,13 +6,22 @@ import utils.Point;
 public class Fog extends AbstractMediator
 {
 
-   public Fog(double speedModifier, double sightModifier) {
-      super(speedModifier, sightModifier);
+   private final double CHANCE_TO_SUCCEED_MOVE = 30; // 30%
+
+   public Fog(double speedZone, double sightModifier) {
+      super(speedZone, sightModifier);
+
+   }
+
+
+   private Point nextPoint(Point p){
+
+      return new Point(p.getX(),p.getY());
    }
 
    @Override
    void move(Ship s, Point destinationPosition) {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
    }
 
 }

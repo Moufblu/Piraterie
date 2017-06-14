@@ -6,13 +6,13 @@ import utils.Point;
 public class Ocean extends AbstractMediator
 {
 
-   public Ocean(double speedModifier, double sightModifier) {
-      super(speedModifier,sightModifier);
+   public Ocean(double speedZone, double sightModifier) {
+      super(speedZone,sightModifier);
    }
 
    @Override
    void move(Ship s, Point destinationPosition) {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
    }
    
 }

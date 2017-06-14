@@ -29,6 +29,10 @@ public abstract class Ship
       return position;
    }
 
+   public void setPosition(Point newPosition) {
+      position = newPosition;
+   }
+
    public int getSpeed() {
       return speed;
    }
