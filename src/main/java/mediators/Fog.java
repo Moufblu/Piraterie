@@ -7,13 +7,12 @@ import utils.Position;
 public class Fog extends AbstractMediator
 {
 
-   private final double CHANCE_TO_FAIL_MOVE = 10; // 30%
+   private final double CHANCE_TO_FAIL_MOVE = 30; // 30%
 
    public Fog(double speedZone, double sightModifier) {
       super(speedZone, sightModifier);
 
    }
-
 
    private Position nextPoint(Position p){
 

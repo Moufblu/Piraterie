@@ -4,35 +4,52 @@ import ships.RobbingShip;
 import ships.Ship;
 import utils.Position;
 
+public abstract class AbstractMediator
+{
 
-public abstract class AbstractMediator {
+   protected final double speedZone;
+   protected final double sightModifier;
 
-    protected final double speedZone;
-    protected final double sightModifier;
+   public AbstractMediator(double speedZone, double sightModifier)
+   {
+      this.speedZone = speedZone;
+      this.sightModifier = sightModifier;
+   }
 
-    public AbstractMediator(double speedZone, double sightModifier) {
-        this.speedZone = speedZone;
-        this.sightModifier = sightModifier;
-    }
+   public void move(Ship s, Position destination)
+   {
+      double signX = Math.signum(destination.getXDouble() - s.getPosition().getXDouble());
+      double signY = Math.signum(destination.getYDouble() - s.getPosition().getYDouble());
 
-   public void move(Ship s, Position destination){
-      double signX = Math.signum(destination.getXDouble()- s.getPosition().getXDouble());      
-      double signY = Math.signum(destination.getYDouble()- s.getPosition().getYDouble());
-      
-      s.getPosition().move(signX * speedZone, signY * speedZone);
+      double angle = getAngle(s.getPosition(), destination);
+      s.getPosition().move(Math.cos(angle) * speedZone, Math.sin(angle) * speedZone);
 
-      if(signX * s.getPosition().getXDouble() > signX * destination.getXDouble()
-              || signY * s.getPosition().getYDouble() > signY * destination.getYDouble()){
+      if (signX * s.getPosition().getXDouble() > signX * destination.getXDouble()
+              || signY * s.getPosition().getYDouble() > signY * destination.getYDouble())
+      {
          s.setPosition(destination);
       }
    }
 
-    boolean isInRange(RobbingShip s, Ship shipToAttack) {
-        return (s.distanceTo(shipToAttack)*sightModifier < s.getRangeView());
-    }
+   private double getAngle(Position source, Position destination)
+   {
+      double angle = Math.toDegrees(Math.atan2(destination.getYDouble() - source.getYDouble(), destination.getXDouble() - source.getXDouble()));
 
-    void attack(RobbingShip s, Ship shipToAttack){
-        shipToAttack.setHp(shipToAttack.getHp()-s.getAttackPower());
-    }
+      if (angle < 0)
+      {
+         angle += 360;
+      }
+      return angle;
+   }
+
+   boolean isInRange(RobbingShip s, Ship shipToAttack)
+   {
+      return (s.distanceTo(shipToAttack) * sightModifier < s.getRangeView());
+   }
+
+   void attack(RobbingShip s, Ship shipToAttack)
+   {
+      shipToAttack.setHp(shipToAttack.getHp() - s.getAttackPower());
+   }
 
 }

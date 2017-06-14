@@ -19,12 +19,17 @@ public class GreatMediator extends Observable {
         CORSAIR , MERCHANT , PIRATE
     }
 
+   private int merchantTreasure;
+   private int pirateTreasure;
+   
    private List<AbstractMediator> mediators;
    private final List<List<Ship>> ships;
 
    private AbstractMediator[][] mediatorMatrix;
 
    public GreatMediator(List<AbstractMediator> mediators, PirateConstants.terrainType[][] terrain) {
+      this.pirateTreasure = 0;
+      this.merchantTreasure = 0;
        mediatorMatrix = new AbstractMediator[terrain.length][terrain[0].length];
        for( int i = 0; i < terrain.length; i++ ) {
            for (int j = 0; j < terrain[0].length; j++) {
@@ -75,6 +80,18 @@ public class GreatMediator extends Observable {
    public void wantToDeposit(Ship ship) {
       deposit(ship);
    }
+   
+   public void wantToDeposit(Merchant ship) {
+      if(deposit(ship)){
+         merchantTreasure += ship.getCapacity();
+      }
+   }
+   
+   public void wantToDeposit(Pirate ship) {
+      if(deposit(ship)){
+         pirateTreasure += ship.getTreasure();
+      }
+   }
 
    public void wantToAttack(Pirate p) {
       attack(p, ShipType.MERCHANT);
@@ -84,10 +101,15 @@ public class GreatMediator extends Observable {
       attack(c, ShipType.PIRATE);
    }
 
-    public void deposit(Ship s) {
+    public boolean deposit(Ship s) {
         for (int i = 0; i < s.getSpeed(); i++) {
             move(s, s.getBase());
+            if(s.getPosition().equals(s.getBase())){
+               s.setPosition(s.getSpawn());
+               return true;
+            }
         }
+        return false;
     }
 
     //Tell the corresponding mediator to move ship in the direction of point
@@ -123,4 +145,14 @@ public class GreatMediator extends Observable {
             }
         }
     }
+    
+    public int getMerchantTreasure()
+   {
+      return merchantTreasure;
+   }
+
+   public int getPirateTreasure()
+   {
+      return pirateTreasure;
+   }
 }

@@ -64,7 +64,7 @@ public abstract class Ship
       return rangeView;
    }
 
-   public int getCAPACITY()
+   public int getCapacity()
    {
       return CAPACITY;
    }

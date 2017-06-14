@@ -204,11 +204,6 @@ public class FXMLController implements Initializable
 
          }
          
-//         merchantProgressBar.setProgress(treasureGoal/greatMediator.getMerchantTreasure());
-//         pirateProgressBar.setProgress(treasureGoal/greatMediator.getPirateTreasure());
-//         merchantProgressLabel.setText(greatMediator.getMerchantTreasure());
-//         pirateProgressLabel.setText(greatMediator.getPirateTreasure());
-
          updateBoats();
       }
    }
@@ -221,6 +216,12 @@ public class FXMLController implements Initializable
    {
       Platform.runLater(() ->
       {
+         merchantProgressBar.setProgress(greatMediator.getMerchantTreasure()/treasureGoal);
+         pirateProgressBar.setProgress(greatMediator.getPirateTreasure()/treasureGoal);
+         merchantProgressLabel.setText(Integer.toString(greatMediator.getMerchantTreasure()));
+         pirateProgressLabel.setText(Integer.toString(greatMediator.getPirateTreasure()));
+         
+         
          List<List<Ship>> l = greatMediator.getShips();
          gamePane.getChildren().clear();
          for (int i = 0; i < l.size(); ++i)

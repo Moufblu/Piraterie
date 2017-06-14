@@ -82,6 +82,7 @@
             <TextField fx:id="merchantTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="pirateTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="corsairTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="treasureTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Slider fx:id="gameSpeedSlider" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Button fx:id="startButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Start simulation" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game speed" GridPane.columnIndex="1" GridPane.rowIndex="8" />
@@ -89,7 +90,6 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Corsairs" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirates" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchants" GridPane.columnIndex="1" />
-            <TextField fx:id="treasureTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" />
