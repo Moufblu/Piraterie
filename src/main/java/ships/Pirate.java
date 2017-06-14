@@ -44,10 +44,6 @@ public class Pirate extends RobbingShip {
    @Override
    public Color getColor(){ return Color.SLATEGRAY; }
 
-   @Override
-   public double getAttackPower() {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   }
 
    @Override
    public void run() {

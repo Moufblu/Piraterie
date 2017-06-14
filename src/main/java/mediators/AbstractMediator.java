@@ -32,7 +32,7 @@ public abstract class AbstractMediator {
     }
 
     void attack(RobbingShip s, Ship shipToAttack){
-        shipToAttack.setHp(shipToAttack.getHp()-s.getAttack());
+        shipToAttack.setHp(shipToAttack.getHp()-s.getAttackPower());
     }
 
 }

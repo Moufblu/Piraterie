@@ -42,10 +42,6 @@ public class Corsair extends RobbingShip {
       return BOUND_RANGE_VIEW;
    }
 
-   @Override
-   public double getAttackPower() {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   }
 
    @Override
    public Color getColor(){ return Color.MAGENTA; }
