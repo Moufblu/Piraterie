@@ -4,6 +4,7 @@ import constants.PirateConstants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import mediators.GreatMediator;
@@ -53,9 +54,21 @@ public class FXMLController implements Initializable
    private TextField corsairTextField;
    @FXML
    private TextField treasureTextField;
+   
+       @FXML
+    private ProgressBar merchantProgressBar;
+    @FXML
+    private ProgressBar pirateProgressBar;
+
+    @FXML
+    private Label pirateProgressLabel;
+    @FXML
+    private Label merchantProgressLabel;
 
    public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
    private GreatMediator greatMediator;
+   
+   private int treasureGoal;
 
    @Override
    public void initialize(URL url, ResourceBundle rb)
@@ -118,6 +131,7 @@ public class FXMLController implements Initializable
 
          //créer le mediateur
          greatMediator = new GreatMediator(mediators, terrainMatrix);
+         treasureGoal = Integer.valueOf(treasureTextField.getText());
 
          //ajoute les bateaux au médiateur
          int nbrPirates = Integer.valueOf(pirateTextField.getText());
@@ -144,6 +158,7 @@ public class FXMLController implements Initializable
             greatMediator.add(new Merchant(greatMediator, new utils.Position(x, y)));
          }
 
+         
          //loop de la simulation
          new Thread(() -> loop()).start();
 
@@ -188,6 +203,11 @@ public class FXMLController implements Initializable
             }
 
          }
+         
+//         merchantProgressBar.setProgress(treasureGoal/greatMediator.getMerchantTreasure());
+//         pirateProgressBar.setProgress(treasureGoal/greatMediator.getPirateTreasure());
+//         merchantProgressLabel.setText(greatMediator.getMerchantTreasure());
+//         pirateProgressLabel.setText(greatMediator.getPirateTreasure());
 
          updateBoats();
       }
