@@ -17,15 +17,12 @@ public abstract class RobbingShip extends Ship
    
    protected abstract int getMaxAttack();
 
-   public int getAttack()
-   {
-      return ATTACK;
-   }
-
    public int getTreasure()
    {
       return treasure;
    }
    
-   public abstract double getAttackPower();
+   public double getAttackPower(){
+      return ATTACK;
+   }
 }

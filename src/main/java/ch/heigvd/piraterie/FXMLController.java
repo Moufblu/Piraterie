@@ -112,7 +112,7 @@ public class FXMLController implements Initializable {
            {
               double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
-              greatMediator.add(new Pirate(greatMediator, new utils.Point((int)x, (int)y)));
+              greatMediator.add(new Pirate(greatMediator, new utils.Position((int)x, (int)y)));
            }
            
            int nbrCorsair = Integer.valueOf(corsairTextField.getText());
@@ -120,7 +120,7 @@ public class FXMLController implements Initializable {
            {
               double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
-              greatMediator.add(new Corsair(greatMediator, new utils.Point((int)x, (int)y)));
+              greatMediator.add(new Corsair(greatMediator, new utils.Position((int)x, (int)y)));
            }
            
            int nbrMerchants = Integer.valueOf(merchantTextField.getText());
@@ -128,7 +128,7 @@ public class FXMLController implements Initializable {
            {
               double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
-              greatMediator.add(new Merchant(greatMediator, new utils.Point((int)x, (int)y)));
+              greatMediator.add(new Merchant(greatMediator, new utils.Position((int)x, (int)y)));
            }
            
            //loop de la simulation
