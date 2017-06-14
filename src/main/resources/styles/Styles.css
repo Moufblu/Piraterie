@@ -1,3 +1,10 @@
 .button {
     -fx-font-weight: bold;
 }
+
+#gamePane{
+    -fx-background-image: url("../img/example_map.bmp");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 800 600;
+    -fx-background-position: center center;
+}

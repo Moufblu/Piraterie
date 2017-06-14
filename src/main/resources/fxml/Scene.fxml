@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="ch.heigvd.piraterie.FXMLController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.heigvd.piraterie.FXMLController">
+   <bottom>
+      <GridPane fx:id="totalGoldPane" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchant gold" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirate gold" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ProgressBar fx:id="merchantProgressBar" maxWidth="-Infinity" prefWidth="150.0" progress="0.0" GridPane.halignment="CENTER" />
+                  <Label fx:id="merchantProgressLabel" prefHeight="17.0" prefWidth="31.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ProgressBar fx:id="pirateProgressBar" maxWidth="-Infinity" prefWidth="150.0" progress="0.0" GridPane.halignment="CENTER" />
+                  <Label fx:id="pirateProgressLabel" text="Label" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </bottom>
+   <right>
+      <GridPane fx:id="configurationPane" prefHeight="339.0" prefWidth="130.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints maxWidth="14.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="merchantTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="pirateTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="corsairTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Slider fx:id="gameSpeedSlider" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Button fx:id="startButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Start simulation" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game speed" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Treasure goal" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Corsairs" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pirates" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merchants" GridPane.columnIndex="1" />
+            <TextField fx:id="treasureTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </right>
+   <center>
+      <AnchorPane fx:id="gamePane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
