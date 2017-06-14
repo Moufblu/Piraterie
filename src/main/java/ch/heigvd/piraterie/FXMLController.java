@@ -108,6 +108,7 @@ public class FXMLController implements Initializable {
            int nbrPirates = Integer.valueOf(pirateTextField.getText());
            for (int i = 0; i < nbrPirates; i++)
            {
+
               double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
               greatMediator.add(new Pirate(greatMediator, new utils.Position(x, y)));
@@ -116,6 +117,7 @@ public class FXMLController implements Initializable {
            int nbrCorsair = Integer.valueOf(corsairTextField.getText());
            for (int i = 0; i < nbrCorsair; i++)
            {
+
               double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
               greatMediator.add(new Corsair(greatMediator, new utils.Position(x, y)));
@@ -124,6 +126,7 @@ public class FXMLController implements Initializable {
            int nbrMerchants = Integer.valueOf(merchantTextField.getText());
            for (int i = 0; i < nbrMerchants; i++)
            {
+
               double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
               greatMediator.add(new Merchant(greatMediator, new utils.Position(x, y)));
@@ -148,13 +151,21 @@ public class FXMLController implements Initializable {
     {
        while (true)
        {
-          greatMediator.getShips().stream().forEach((ships) ->
-         {
-            ships.stream().forEach((ship) ->
-            {
-               ship.run();
-            });
-         });
+          for (List<Ship> ships : greatMediator.getShips())
+          {
+             for (Iterator<Ship> iterator = ships.iterator(); iterator.hasNext();)
+             {
+                Ship ship = iterator.next();
+                if (ship.getHp() == 0)
+                {
+                   iterator.remove();
+                   continue;
+                }
+                
+                ship.run();
+             }
+             
+          }
 
          updateBoats();
        }
