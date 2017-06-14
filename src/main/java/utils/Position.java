@@ -28,20 +28,9 @@ public class Position {
       return y;
    }
 
-   public void goUp(double distance) {
-      y -= distance;
-   }
-
-   public void goDown(double distance) {
-      y += distance;
-   }
-
-   public void goLeft(double distance) {
-      x -= distance;
-   }
-
-   public void goRight(double distance) {
-      x += distance;
+   public void move(double distX, double distY){
+      x += distX;
+      y += distY;
    }
 
    public double distanceTo(Position s) {
