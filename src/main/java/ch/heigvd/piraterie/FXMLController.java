@@ -21,6 +21,8 @@ import static constants.PirateConstants.*;
 import static constants.PirateConstants.terrainType.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import mediators.*;
 import ships.Corsair;
 import ships.Merchant;
@@ -79,7 +81,7 @@ public class FXMLController implements Initializable {
             }
         }
         
-        startButton.addActionListener ((ActionEvent e) ->
+        startButton.setOnAction(e ->       
         {
            Random RANDOM = new Random(); //à changer avec le constant global
            

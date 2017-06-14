@@ -43,11 +43,10 @@ public class GreatMediator extends Observable {
    private King king;
 
    public GreatMediator(List<AbstractMediator> mediators) {
-      this.ships = new ArrayList<>(ShipType.values().length);
-
-      ships.stream().forEach((ship) -> {
-         ship = new LinkedList<>();
-      });
+      this.ships = new ArrayList<>();
+      
+      for (int i = 0; i < ShipType.values().length; i++)
+         ships.add(new ArrayList<>());
    }
 
    public Optional<Ship> getClosest(Ship s, ShipType type) {
