@@ -2,21 +2,46 @@ package ships;
 
 import mediators.GreatMediator;
 
-public class Corsair extends Ship implements Attacker
+public class Corsair extends RobbingShip
 {
-   protected Corsair(GreatMediator mediator, int capacity, int speed, int rangeView)
+   private final static int BOUND_ATTACK = 10;
+   private final static int BOUND_HP_MAX = 100;
+   private final static int BOUND_CAPACITY = 100;
+   private final static int BOUND_SPEED = 2;
+   private final static int BOUND_RANGE_VIEW = 3;
+   
+   public Corsair(GreatMediator mediator, Point position)
    {
-      super(mediator, capacity, speed, rangeView);
+      super(mediator, position);
    }
 
    @Override
-   void move()
+   protected int getMaxAttack()
    {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      return BOUND_ATTACK;
+   }
+   
+   @Override
+   public int getMaxHP()
+   {
+      return BOUND_HP_MAX;
    }
 
    @Override
-   public void attack() {
+   public int getMaxCapacity()
+   {
+      return BOUND_CAPACITY;
+   }
 
+   @Override
+   public int getMaxSpeed()
+   {
+      return BOUND_SPEED;
+   }
+
+   @Override
+   public int getMaxRangeView()
+   {
+      return BOUND_RANGE_VIEW;
    }
 }
