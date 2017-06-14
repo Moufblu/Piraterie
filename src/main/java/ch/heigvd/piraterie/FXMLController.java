@@ -108,24 +108,24 @@ public class FXMLController implements Initializable {
            int nbrPirates = Integer.valueOf(pirateTextField.getText());
            for (int i = 0; i < nbrPirates; i++)
            {
-              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
-              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               greatMediator.add(new Pirate(greatMediator, new utils.Position(x, y)));
            }
            
            int nbrCorsair = Integer.valueOf(corsairTextField.getText());
            for (int i = 0; i < nbrCorsair; i++)
            {
-              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
-              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               greatMediator.add(new Corsair(greatMediator, new utils.Position(x, y)));
            }
            
            int nbrMerchants = Integer.valueOf(merchantTextField.getText());
            for (int i = 0; i < nbrMerchants; i++)
            {
-              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
-              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
               greatMediator.add(new Merchant(greatMediator, new utils.Position(x, y)));
            }
            
