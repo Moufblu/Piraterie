@@ -30,7 +30,7 @@ public abstract class Ship
       this.position = position;
    }
    
-   public int distanceTo(Ship s){
+   public double distanceTo(Ship s){
       return position.distanceTo(s.position);
    }
 
@@ -70,8 +70,13 @@ public abstract class Ship
       return position;
    }
    
-   
    public void setPosition(Position newPosition) {
       position = newPosition;
    }
+
+   public void setHp(int hp) {
+      this.hp = hp;
+   }
+
+   abstract public Position getBase();
 }

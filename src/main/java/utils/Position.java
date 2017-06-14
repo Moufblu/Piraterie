@@ -1,41 +1,50 @@
-
 package utils;
-
-import ships.Ship;
 
 /**
  *
  */
+public class Position {
 
-public class Position{
-   private int x, y;
+   private double x, y;
 
-   public Position(int x, int y) {
+   public Position(double x, double y) {
       this.x = x;
       this.y = y;
    }
 
    public int getX() {
+      return (int) x;
+   }
+
+   public double getXDouble() {
       return x;
    }
 
    public int getY() {
+      return (int) y;
+   }
+
+   public double getYDouble() {
       return y;
    }
 
-   public void setX(int x) {
-      this.x = x;
+   public void goUp(double distance) {
+      y -= distance;
    }
 
-   public void setY(int y) {
-      this.y = y;
+   public void goDown(double distance) {
+      y += distance;
    }
 
-   public int distanceTo(Position s){
+   public void goLeft(double distance) {
+      x -= distance;
+   }
+
+   public void goRight(double distance) {
+      x += distance;
+   }
+
+   public double distanceTo(Position s) {
       return Math.abs(x - s.x) + Math.abs(y - s.y);
-   }
-   public Position nextPoint(Position destination){
-      double newX = Math.min(x, destination.getX());
-      return new Position(0,0);
    }
 }

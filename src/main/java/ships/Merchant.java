@@ -44,4 +44,9 @@ public class Merchant extends Ship
    {
       return BOUND_RANGE_VIEW;
    }
+
+   @Override
+   public Position getBase() {
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   }
 }

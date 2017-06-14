@@ -53,7 +53,7 @@ public class GreatMediator extends Observable {
    public Optional<Ship> getClosest(Ship s, ShipType type) {
       return ships.get(type.ordinal())
               .stream()
-              .sorted((a, b) -> a.distanceTo(s) - b.distanceTo(s))
+              .sorted((a, b) -> (int) (a.distanceTo(s) - b.distanceTo(s)))
               .findFirst();
    }
 

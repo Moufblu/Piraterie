@@ -53,4 +53,9 @@ public class Pirate extends RobbingShip {
          mediator.wantToAttack(this);
       }
    }
+
+   @Override
+   public Position getBase() {
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   }
 }
