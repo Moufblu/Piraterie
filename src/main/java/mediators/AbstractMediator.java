@@ -20,11 +20,15 @@ public abstract class AbstractMediator {
       double signY = Math.signum(destination.getYDouble()- s.getPosition().getYDouble());
       
       s.getPosition().move(signX * speedZone, signY * speedZone);
-      
+
+       System.out.println("AVANT : "+s.getPosition().getX() +" ," +s.getPosition().getY());
+
       if(signX * s.getPosition().getXDouble() > signX * destination.getXDouble()
               || signY * s.getPosition().getYDouble() > signY * destination.getYDouble()){
          s.setPosition(destination);
       }
+       System.out.println("APRES : "+s.getPosition().getX() +" ," +s.getPosition().getY());
+
    }
 
     boolean isInRange(RobbingShip s, Ship shipToAttack) {
