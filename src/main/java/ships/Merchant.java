@@ -18,7 +18,7 @@ public class Merchant extends Ship
    @Override
    public void run()
    {
-      mediator.deposit();
+      mediator.wantToDeposit(this);
    }
    
    @Override

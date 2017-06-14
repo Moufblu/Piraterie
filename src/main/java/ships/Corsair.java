@@ -1,6 +1,7 @@
 package ships;
 
 import mediators.GreatMediator;
+import utils.Point;
 
 public class Corsair extends RobbingShip
 {

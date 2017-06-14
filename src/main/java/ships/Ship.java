@@ -1,6 +1,5 @@
 package ships;
 
-import java.util.Calendar;
 import java.util.Random;
 import mediators.GreatMediator;
 import utils.Point;
@@ -9,8 +8,6 @@ public abstract class Ship
 {
    protected final int MAX_HP;
    protected int hp;
-   private Point position;
-   private final GreatMediator mediator;
 
    protected final int CAPACITY;
    
@@ -18,7 +15,7 @@ public abstract class Ship
    protected int rangeView;
    protected Point position;
    
-   protected AbstractMediator mediator;
+   protected final GreatMediator mediator;
    
    private static final Random rand = new Random();
    
@@ -42,7 +39,6 @@ public abstract class Ship
       return rand.nextInt(max - min) + min;
    }
    
-   abstract void move();
    public abstract void run();
    public abstract int getMaxHP();
    public abstract int getMaxCapacity();

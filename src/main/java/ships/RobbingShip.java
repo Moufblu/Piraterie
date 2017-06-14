@@ -1,14 +1,14 @@
 package ships;
 
-import java.awt.Point;
-import mediators.AbstractMediator;
+import utils.Point;
+import mediators.GreatMediator;
 
 public abstract class RobbingShip extends Ship
 {
    protected final int ATTACK;
    protected int treasure;
    
-   protected RobbingShip(AbstractMediator mediator, Point position)
+   protected RobbingShip(GreatMediator mediator, Point position)
    {
       super(mediator, position);
       ATTACK = randomBetween(1, getMaxAttack());
