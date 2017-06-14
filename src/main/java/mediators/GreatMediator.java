@@ -95,7 +95,7 @@ public class GreatMediator extends Observable {
     }
 
     //Tell the corresponding mediator to move ship in the direction of point
-    public void move(Ship ship, Point point) {
+    private void move(Ship ship, Point point) {
         mediatorMatrix[ship.getPosition().getX()][ship.getPosition().getY()].move(ship, point);
     }
 
@@ -104,12 +104,12 @@ public class GreatMediator extends Observable {
      * @param shipToAttack the ship to attack
      * @return true if s and shipToAttack are in range
      */
-    public boolean isInRange(Ship s, Ship shipToAttack){
+    private boolean isInRange(Ship s, Ship shipToAttack){
         return mediatorMatrix[s.getPosition().getX()][s.getPosition().getY()].isInRange(s,shipToAttack);
     }
 
 
-    public void attack(Ship s, ShipType shipTypeToAttack) {
+    private void attack(Ship s, ShipType shipTypeToAttack) {
         Optional<Ship> shipToAttackOpt = getClosest(s, shipTypeToAttack);
         for (int i = 0; i < s.getSpeed(); i++) {
             if (shipToAttackOpt.isPresent()) {
@@ -125,7 +125,7 @@ public class GreatMediator extends Observable {
             } else {
                 System.out.println("No ship to attack !");
                 //move to a random position
-                move(s);
+                move(s,s.getBase());
             }
         }
     }
