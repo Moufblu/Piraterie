@@ -66,8 +66,13 @@ public class FXMLController implements Initializable {
         }
     }
 
+    /**
+     * Permet de mettre à jour la position des bateaux connus par le grand médiateur
+     * sur l'affichage principal du jeu.
+     */
     public void updateBoats(){
         List<List<Ship>> l = greatMediator.getShips();
+        gamePane.getChildren().clear();
         for(int i = 0; i < l.size(); ++i){
             for(Ship s : l.get(i)){
                 Circle temp = new Circle(s.getPosition().getX(),s.getPosition().getY(),10);
