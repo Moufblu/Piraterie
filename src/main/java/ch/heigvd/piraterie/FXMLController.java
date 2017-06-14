@@ -33,7 +33,7 @@ public class FXMLController implements Initializable {
         //gamePane.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         BufferedImage map = null;
         try{
-            map = ImageIO.read(new java.io.File("../img/example_map.bmp"));
+            map = ImageIO.read(new java.io.File("src/main/resources/img/example_map.bmp"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,11 +59,5 @@ public class FXMLController implements Initializable {
                 }
             }
         }
-
-        for( int i = 0; i < terrainMatrix.length; i++ )
-            for (int j = 0; j < terrainMatrix[0].length; j++)
-                System.out.println(terrainMatrix[i][j]);
-
-        System.out.println("TEST");
     }
 }
