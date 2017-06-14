@@ -3,6 +3,8 @@ package ships;
 import utils.Point;
 import mediators.GreatMediator;
 
+import javafx.scene.paint.Color;
+
 public class Pirate extends RobbingShip
 {
    private final static int BOUND_ATTACK = 5;
@@ -45,6 +47,9 @@ public class Pirate extends RobbingShip
    {
       return BOUND_RANGE_VIEW;
    }
+
+   @Override
+   public Color getColor(){ return Color.SLATEGRAY; }
 
     @Override
     public double getAttackPower() {

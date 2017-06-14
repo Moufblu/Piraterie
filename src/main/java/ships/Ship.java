@@ -1,5 +1,6 @@
 package ships;
 
+import javafx.scene.paint.Color;
 import java.util.Random;
 import mediators.GreatMediator;
 import utils.Point;
@@ -14,7 +15,8 @@ public abstract class Ship
    protected int speed;
    protected int rangeView;
    protected Point position;
-   
+   protected Color colour;
+
    protected final GreatMediator mediator;
    
    private static final Random rand = new Random();
@@ -69,6 +71,8 @@ public abstract class Ship
    {
       return position;
    }
+
+   public abstract Color getColor();
    
    
    public void setPosition(Point newPosition) {

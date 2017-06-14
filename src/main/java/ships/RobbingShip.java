@@ -20,11 +20,11 @@ public abstract class RobbingShip extends Ship
    {
       if (treasure == CAPACITY)
       {
-         mediator.returnToBase();
+         //mediator.returnToBase();
       }
       else
       {
-         mediator.findTarget();
+         //mediator.findTarget();
       }
    }
    

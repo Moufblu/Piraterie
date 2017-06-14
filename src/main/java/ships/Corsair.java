@@ -3,6 +3,8 @@ package ships;
 import mediators.GreatMediator;
 import utils.Point;
 
+import javafx.scene.paint.Color;
+
 public class Corsair extends RobbingShip
 {
    private final static int BOUND_ATTACK = 10;
@@ -46,7 +48,11 @@ public class Corsair extends RobbingShip
       return BOUND_RANGE_VIEW;
    }
 
-    @Override
+   @Override
+   public Color getColor(){ return Color.MAGENTA; }
+
+
+   @Override
     public double getAttackPower() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

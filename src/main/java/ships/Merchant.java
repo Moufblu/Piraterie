@@ -3,6 +3,8 @@ package ships;
 import utils.Point;
 import mediators.GreatMediator;
 
+import javafx.scene.paint.Color;
+
 public class Merchant extends Ship
 {
    private final static int BOUND_HP_MAX = 100;
@@ -44,4 +46,8 @@ public class Merchant extends Ship
    {
       return BOUND_RANGE_VIEW;
    }
+
+   @Override
+   public Color getColor(){ return Color.YELLOW; }
+
 }
