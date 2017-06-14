@@ -94,9 +94,7 @@ public class FXMLController implements Initializable {
         // On prépare les médiateurs et les bateaux avant de commencer la simulation
         
         startButton.setOnAction(e ->       
-        {
-           Random RANDOM = new Random(); //à changer avec le constant global
-           
+        {           
            //créer les sous-médiateurs
            List<AbstractMediator> mediators = new ArrayList<>();
            mediators.add(new Coast(1.5, 0.8));
@@ -110,25 +108,28 @@ public class FXMLController implements Initializable {
            int nbrPirates = Integer.valueOf(pirateTextField.getText());
            for (int i = 0; i < nbrPirates; i++)
            {
-              double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
-              double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
-              greatMediator.add(new Pirate(greatMediator, new utils.Position((int)x, (int)y)));
+
+              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
+              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              greatMediator.add(new Pirate(greatMediator, new utils.Position(x, y)));
            }
            
            int nbrCorsair = Integer.valueOf(corsairTextField.getText());
            for (int i = 0; i < nbrCorsair; i++)
            {
-              double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
-              double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
-              greatMediator.add(new Corsair(greatMediator, new utils.Position((int)x, (int)y)));
+
+              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
+              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              greatMediator.add(new Corsair(greatMediator, new utils.Position(x, y)));
            }
            
            int nbrMerchants = Integer.valueOf(merchantTextField.getText());
            for (int i = 0; i < nbrMerchants; i++)
            {
-              double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
-              double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
-              greatMediator.add(new Merchant(greatMediator, new utils.Position((int)x, (int)y)));
+
+              double x = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
+              double y = PirateConstants.RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              greatMediator.add(new Merchant(greatMediator, new utils.Position(x, y)));
            }
            
            //loop de la simulation
@@ -148,15 +149,18 @@ public class FXMLController implements Initializable {
     
     private void loop()
     {
-       greatMediator.getShips().stream().forEach((ships) ->
+       while (true)
        {
-          ships.stream().forEach((ship) ->
-          {
-             ship.run();
-          });
-       });
-       
-       updateBoats();
+          greatMediator.getShips().stream().forEach((ships) ->
+         {
+            ships.stream().forEach((ship) ->
+            {
+               ship.run();
+            });
+         });
+
+         updateBoats();
+       }
     }
 
     /**
