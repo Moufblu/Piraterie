@@ -1,7 +1,7 @@
 package mediators;
 
 import ships.Ship;
-import utils.Point;
+import utils.Position;
 
 import java.util.Random;
 
@@ -16,5 +16,5 @@ public abstract class AbstractMediator {
         this.sightModifier = sightModifier;
     }
 
-    abstract void move(Ship s, Point destinationPosition);
+    abstract void move(Ship s, Position destinationPosition);
 }

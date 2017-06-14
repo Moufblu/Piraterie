@@ -1,7 +1,7 @@
 package ships;
 
 import mediators.GreatMediator;
-import utils.Point;
+import utils.Position;
 
 public class Corsair extends RobbingShip {
 
@@ -11,7 +11,7 @@ public class Corsair extends RobbingShip {
    private final static int BOUND_SPEED = 2;
    private final static int BOUND_RANGE_VIEW = 3;
 
-   public Corsair(GreatMediator mediator, Point position) {
+   public Corsair(GreatMediator mediator, Position position) {
       super(mediator, position);
    }
 

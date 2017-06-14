@@ -1,6 +1,6 @@
 package ships;
 
-import utils.Point;
+import utils.Position;
 import mediators.GreatMediator;
 
 public class Merchant extends Ship
@@ -10,7 +10,7 @@ public class Merchant extends Ship
    private final static int BOUND_SPEED = 1;
    private final static int BOUND_RANGE_VIEW = 3;
    
-   public Merchant(GreatMediator mediator, Point position)
+   public Merchant(GreatMediator mediator, Position position)
    {
       super(mediator, position);
    }

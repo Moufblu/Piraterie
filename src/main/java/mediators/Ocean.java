@@ -1,7 +1,7 @@
 package mediators;
 
 import ships.Ship;
-import utils.Point;
+import utils.Position;
 
 public class Ocean extends AbstractMediator
 {
@@ -11,7 +11,7 @@ public class Ocean extends AbstractMediator
    }
 
    @Override
-   void move(Ship s, Point destinationPosition) {
+   void move(Ship s, Position destinationPosition) {
 
    }
    

@@ -1,7 +1,7 @@
 package mediators;
 
 import ships.Ship;
-import utils.Point;
+import utils.Position;
 
 public class Fog extends AbstractMediator
 {
@@ -14,13 +14,13 @@ public class Fog extends AbstractMediator
    }
 
 
-   private Point nextPoint(Point p){
+   private Position nextPoint(Position p){
 
-      return new Point(p.getX(),p.getY());
+      return new Position(p.getX(),p.getY());
    }
 
    @Override
-   void move(Ship s, Point destinationPosition) {
+   void move(Ship s, Position destinationPosition) {
 
    }
 

@@ -11,27 +11,27 @@ import ships.Ship;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Optional;
-import utils.Point;
+import utils.Position;
 
 public class GreatMediator extends Observable {
 
    public enum ShipType {
 
         CORSAIR {
-            public Point getDepositPosition() {
-                return new Point(0, 0);
+            public Position getDepositPosition() {
+                return new Position(0, 0);
             }
         }, MERCHANT {
-            public Point getDepositPosition() {
-                return new Point(0, 0);
+            public Position getDepositPosition() {
+                return new Position(0, 0);
             }
         }, PIRATE {
-            public Point getDepositPosition() {
-                return new Point(0, 0);
+            public Position getDepositPosition() {
+                return new Position(0, 0);
             }
         };
 
-        public abstract Point getDepositPosition();
+        public abstract Position getDepositPosition();
     }
 
    private List<AbstractMediator> mediators;
@@ -100,7 +100,7 @@ public class GreatMediator extends Observable {
     }
 
     //Tell the corresponding mediator to move ship in the direction of point
-    private void move(Ship ship, Point point) {
+    private void move(Ship ship, Position point) {
         mediatorMatrix[ship.getPosition().getX()][ship.getPosition().getY()].move(ship, point);
     }
 
