@@ -39,4 +39,6 @@ public abstract class RobbingShip extends Ship
    {
       return treasure;
    }
+   
+   public abstract double getAttackPower();
 }

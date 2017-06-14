@@ -17,18 +17,18 @@ public class GreatMediator {
    public enum ShipType {
 
       CORSAIR {
-                 public Point getDepositPosition() {
-                    return new Point(0, 0);
-                 }
-              }, MERCHANT {
-                 public Point getDepositPosition() {
-                    return new Point(0, 0);
-                 }
-              }, PIRATE {
-                 public Point getDepositPosition() {
-                    return new Point(0, 0);
-                 }
-              };
+         public Point getDepositPosition() {
+            return new Point(0, 0);
+         }
+      }, MERCHANT {
+         public Point getDepositPosition() {
+            return new Point(0, 0);
+         }
+      }, PIRATE {
+         public Point getDepositPosition() {
+            return new Point(0, 0);
+         }
+      };
 
       public abstract Point getDepositPosition();
    }
