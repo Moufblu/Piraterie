@@ -1,10 +1,10 @@
 package ships;
 
-import mediators.AbstractMediator;
+import mediators.GreatMediator;
 
 public class Merchant extends Ship
 {
-   protected Merchant(AbstractMediator mediator, int capacity, int speed, int rangeView)
+   protected Merchant(GreatMediator mediator, int capacity, int speed, int rangeView)
    {
       super(mediator, capacity, speed, rangeView);
    }

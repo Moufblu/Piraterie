@@ -1,16 +1,17 @@
 package ships;
 
-import mediators.AbstractMediator;
+import mediators.GreatMediator;
+import utils.Point;
 
 public abstract class Ship
 {
-   private int x, y;
+   private Point position;
    private final int CAPACITY;
-   private int speed,
-               rangeView;
-   private AbstractMediator mediator;
+   private final int speed;
+   private final int rangeView;
+   private final GreatMediator mediator;
    
-   protected Ship(AbstractMediator mediator, int capacity, int speed, int rangeView)
+   protected Ship(GreatMediator mediator, int capacity, int speed, int rangeView)
    {
       CAPACITY = capacity;
       this.speed = speed;
@@ -19,8 +20,18 @@ public abstract class Ship
    }
    
    public int distanceTo(Ship s){
-      return Math.abs(x - s.x) + Math.abs(y - s.y);
+      return position.distanceTo(s.position);
    }
    
    abstract void move();
+
+   public Point getPosition() {
+      return position;
+   }
+
+   public int getSpeed() {
+      return speed;
+   }
+   
+   
 }

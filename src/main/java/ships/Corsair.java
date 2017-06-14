@@ -1,10 +1,10 @@
 package ships;
 
-import mediators.AbstractMediator;
+import mediators.GreatMediator;
 
 public class Corsair extends Ship implements Attacker
 {
-   protected Corsair(AbstractMediator mediator, int capacity, int speed, int rangeView)
+   protected Corsair(GreatMediator mediator, int capacity, int speed, int rangeView)
    {
       super(mediator, capacity, speed, rangeView);
    }

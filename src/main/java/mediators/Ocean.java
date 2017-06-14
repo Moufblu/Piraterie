@@ -1,16 +1,17 @@
 package mediators;
 
-import java.awt.Point;
+import ships.Ship;
+import utils.Point;
 
 public class Ocean extends AbstractMediator
 {
 
-   public Ocean(GreatMediator greatMediator, double speedModifier) {
-      super(greatMediator, speedModifier);
+   public Ocean(double speedModifier) {
+      super(speedModifier);
    }
 
    @Override
-   void returnToBase(Point base) {
+   void move(Ship s, Point destinationPosition) {
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
    

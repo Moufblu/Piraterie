@@ -1,10 +1,10 @@
 package ships;
 
-import mediators.AbstractMediator;
+import mediators.GreatMediator;
 
 public class Pirate extends Ship implements Attacker
 {
-   protected Pirate(AbstractMediator mediator, int capacity, int speed, int rangeView)
+   protected Pirate(GreatMediator mediator, int capacity, int speed, int rangeView)
    {
       super(mediator, capacity, speed, rangeView);
    }
