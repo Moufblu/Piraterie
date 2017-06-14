@@ -5,11 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import mediators.GreatMediator;
 import ships.Ship;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import javafx.scene.paint.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -66,8 +67,13 @@ public class FXMLController implements Initializable {
     }
 
     public void updateBoats(){
-        for(List<Ship> l : greatMediator.getShips()){
-            
+        List<List<Ship>> l = greatMediator.getShips();
+        for(int i = 0; i < l.size(); ++i){
+            for(Ship s : l.get(i)){
+                Circle temp = new Circle(s.getPosition().getX(),s.getPosition().getY(),10);
+                temp.setFill(s.getColor());
+                gamePane.getChildren().add(new Circle(0,0, 10));
+            }
         }
     }
 
