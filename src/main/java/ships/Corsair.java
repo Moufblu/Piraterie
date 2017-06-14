@@ -57,6 +57,6 @@ public class Corsair extends RobbingShip {
 
    @Override
    public Position getBase() {
-      return new Position(50,50);
+      return new Position(200,200);
    }
 }

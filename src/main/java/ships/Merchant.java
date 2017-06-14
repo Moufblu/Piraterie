@@ -52,6 +52,6 @@ public class Merchant extends Ship
 
    @Override
    public Position getBase() {
-      return new Position(50,50);
+      return new Position(300,300);
    }
 }
