@@ -15,19 +15,6 @@ public abstract class RobbingShip extends Ship
       treasure = 0;
    }
    
-   @Override
-   public void run()
-   {
-      if (treasure == CAPACITY)
-      {
-         mediator.returnToBase();
-      }
-      else
-      {
-         mediator.findTarget();
-      }
-   }
-   
    protected abstract int getMaxAttack();
 
    public int getATTACK()

@@ -11,6 +11,7 @@ import ships.Ship;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Optional;
+import ships.RobbingShip;
 import utils.Point;
 
 public class GreatMediator extends Observable {
@@ -18,18 +19,18 @@ public class GreatMediator extends Observable {
    public enum ShipType {
 
       CORSAIR {
-         public Point getDepositPosition() {
-            return new Point(0, 0);
-         }
-      }, MERCHANT {
-         public Point getDepositPosition() {
-            return new Point(0, 0);
-         }
-      }, PIRATE {
-         public Point getDepositPosition() {
-            return new Point(0, 0);
-         }
-      };
+                 public Point getDepositPosition() {
+                    return new Point(0, 0);
+                 }
+              }, MERCHANT {
+                 public Point getDepositPosition() {
+                    return new Point(0, 0);
+                 }
+              }, PIRATE {
+                 public Point getDepositPosition() {
+                    return new Point(0, 0);
+                 }
+              };
 
       public abstract Point getDepositPosition();
    }
@@ -83,6 +84,14 @@ public class GreatMediator extends Observable {
 
    public void wantToDeposit(Pirate p) {
       deposit(p, ShipType.PIRATE);
+   }
+
+   public void wantToAttack(Pirate p) {
+      attack(p, ShipType.MERCHANT);
+   }
+
+   public void wantToAttack(Corsair c) {
+      attack(c, ShipType.PIRATE);
    }
 
    public void deposit(Ship s, ShipType st) {
