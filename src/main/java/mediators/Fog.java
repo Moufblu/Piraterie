@@ -6,8 +6,8 @@ import utils.Point;
 public class Fog extends AbstractMediator
 {
 
-   public Fog(double speedModifier) {
-      super(speedModifier);
+   public Fog(double speedModifier, double sightModifier) {
+      super(speedModifier, sightModifier);
    }
 
    @Override

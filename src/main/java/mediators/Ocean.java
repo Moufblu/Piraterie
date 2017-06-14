@@ -6,8 +6,8 @@ import utils.Point;
 public class Ocean extends AbstractMediator
 {
 
-   public Ocean(double speedModifier) {
-      super(speedModifier);
+   public Ocean(double speedModifier, double sightModifier) {
+      super(speedModifier,sightModifier);
    }
 
    @Override
