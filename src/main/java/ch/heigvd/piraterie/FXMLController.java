@@ -102,7 +102,7 @@ public class FXMLController implements Initializable {
            mediators.add(new Fog(0.5, 0.2));
            
            //créer le mediateur
-           greatMediator = new GreatMediator(mediators);
+           greatMediator = new GreatMediator(mediators, terrainMatrix);
            
            //ajoute les bateaux au médiateur
            int nbrPirates = Integer.valueOf(pirateTextField.getText());

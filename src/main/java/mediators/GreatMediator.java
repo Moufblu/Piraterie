@@ -3,12 +3,15 @@ package mediators;
 import java.util.ArrayList;
 import java.util.List;
 
+import constants.PirateConstants;
 import ships.*;
 
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Optional;
 import utils.Position;
+
+import static constants.PirateConstants.terrainType.*;
 
 public class GreatMediator extends Observable {
 
@@ -21,7 +24,24 @@ public class GreatMediator extends Observable {
 
    private AbstractMediator[][] mediatorMatrix;
 
-   public GreatMediator(List<AbstractMediator> mediators) {
+   public GreatMediator(List<AbstractMediator> mediators, PirateConstants.terrainType[][] terrain) {
+       mediatorMatrix = new AbstractMediator[terrain.length][terrain[0].length];
+       for( int i = 0; i < terrain.length; i++ ) {
+           for (int j = 0; j < terrain[0].length; j++) {
+               switch (terrain[i][j]){
+                   case FOG :
+                       mediatorMatrix[i][j] = mediators.get(0);
+                       break;
+
+                   case DEEP_WATER:
+                       mediatorMatrix[i][j] = mediators.get(1);
+                       break;
+
+                   default:
+                       mediatorMatrix[i][j] = mediators.get(2);
+               }
+           }
+       }
       this.ships = new ArrayList<>();
       this.mediators = mediators;
       for (int i = 0; i < ShipType.values().length; i++){

@@ -12,9 +12,7 @@ public class Position {
       this.y = y;
    }
 
-   public int getX() {
-      return (int) x;
-   }
+   public int getX()  { return (int) x; }
 
    public double getXDouble() {
       return x;
