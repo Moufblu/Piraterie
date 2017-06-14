@@ -2,7 +2,7 @@ package ships;
 
 import java.util.Random;
 import mediators.GreatMediator;
-import utils.Point;
+import utils.Position;
 
 public abstract class Ship
 {
@@ -13,13 +13,13 @@ public abstract class Ship
    
    protected int speed;
    protected int rangeView;
-   protected Point position;
+   protected Position position;
    
    protected final GreatMediator mediator;
    
    private static final Random rand = new Random();
    
-   protected Ship(GreatMediator mediator, Point position)
+   protected Ship(GreatMediator mediator, Position position)
    {
       MAX_HP = randomBetween(1, getMaxHP());
       hp = MAX_HP;
@@ -65,13 +65,13 @@ public abstract class Ship
       return CAPACITY;
    }
    
-   public Point getPosition()
+   public Position getPosition()
    {
       return position;
    }
    
    
-   public void setPosition(Point newPosition) {
+   public void setPosition(Position newPosition) {
       position = newPosition;
    }
 }

@@ -7,10 +7,10 @@ import ships.Ship;
  *
  */
 
-public class Point{
+public class Position{
    private int x, y;
 
-   public Point(int x, int y) {
+   public Position(int x, int y) {
       this.x = x;
       this.y = y;
    }
@@ -31,11 +31,11 @@ public class Point{
       this.y = y;
    }
 
-   public int distanceTo(Point s){
+   public int distanceTo(Position s){
       return Math.abs(x - s.x) + Math.abs(y - s.y);
    }
-   public Point nextPoint(Point destination){
+   public Position nextPoint(Position destination){
       double newX = Math.min(x, destination.getX());
-      return new Point(0,0);
+      return new Position(0,0);
    }
 }

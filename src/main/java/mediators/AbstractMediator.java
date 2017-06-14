@@ -2,9 +2,8 @@ package mediators;
 
 import ships.RobbingShip;
 import ships.Ship;
-import utils.Point;
+import utils.Position;
 
-import java.util.Random;
 
 public abstract class AbstractMediator {
 
@@ -16,7 +15,7 @@ public abstract class AbstractMediator {
         this.sightModifier = sightModifier;
     }
 
-    abstract void move(Ship s, Point destinationPosition);
+    abstract void move(Ship s, Position destinationPosition);
 
     boolean isInRange(RobbingShip s, Ship shipToAttack) {
         return (s.distanceTo(shipToAttack)*sightModifier < s.getRangeView());
@@ -32,4 +31,5 @@ public abstract class AbstractMediator {
 //        double newY = s.getPosition().getY() + (1-bool)*sign;
 //        return new Point(newX, newY);
 //    }
+
 }
