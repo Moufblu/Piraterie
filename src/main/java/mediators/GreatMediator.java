@@ -9,10 +9,11 @@ import ships.Merchant;
 import ships.Pirate;
 import ships.Ship;
 import java.util.LinkedList;
+import java.util.Observable;
 import java.util.Optional;
 import utils.Point;
 
-public class GreatMediator {
+public class GreatMediator extends Observable {
 
    public enum ShipType {
 
@@ -33,8 +34,8 @@ public class GreatMediator {
       public abstract Point getDepositPosition();
    }
 
-   List<AbstractMediator> mediators;
-   List<List<Ship>> ships;
+   private List<AbstractMediator> mediators;
+   private final List<List<Ship>> ships;
 
    AbstractMediator[][] mediatorMatrix;
 
@@ -54,6 +55,10 @@ public class GreatMediator {
               .stream()
               .sorted((a, b) -> a.distanceTo(s) - b.distanceTo(s))
               .findFirst();
+   }
+
+   public List<List<Ship>> getShips() {
+      return ships;
    }
 
    public void add(Pirate p) {
