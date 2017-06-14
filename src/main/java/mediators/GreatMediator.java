@@ -52,16 +52,8 @@ public class GreatMediator extends Observable {
       ships.get(ShipType.CORSAIR.ordinal()).add(c);
    }
 
-   public void wantToDeposit(Merchant m) {
-      deposit(m);
-   }
-
-   public void wantToDeposit(Corsair c) {
-      deposit(c);
-   }
-
-   public void wantToDeposit(Pirate p) {
-      deposit(p);
+   public void wantToDeposit(Ship ship) {
+      deposit(ship);
    }
 
    public void wantToAttack(Pirate p) {
