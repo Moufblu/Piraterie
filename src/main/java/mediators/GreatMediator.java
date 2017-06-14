@@ -13,37 +13,19 @@ import utils.Position;
 public class GreatMediator extends Observable {
 
    public enum ShipType {
-
-        CORSAIR {
-            public Position getDepositPosition() {
-                return new Position(0, 0);
-            }
-        }, MERCHANT {
-            public Position getDepositPosition() {
-                return new Position(0, 0);
-            }
-        }, PIRATE {
-            public Position getDepositPosition() {
-                return new Position(0, 0);
-            }
-        };
-
-        public abstract Position getDepositPosition();
+        CORSAIR , MERCHANT , PIRATE
     }
 
    private List<AbstractMediator> mediators;
    private final List<List<Ship>> ships;
 
-   AbstractMediator[][] mediatorMatrix;
-
-   private BlackBeard blackBeard;
-   private King king;
+   private AbstractMediator[][] mediatorMatrix;
 
    public GreatMediator(List<AbstractMediator> mediators) {
       this.ships = new ArrayList<>(ShipType.values().length);
-
+      this.mediators = mediators;
       ships.stream().forEach((ship) -> {
-         ship = new LinkedList<>();
+         new LinkedList<>();
       });
    }
 
@@ -71,15 +53,15 @@ public class GreatMediator extends Observable {
    }
 
    public void wantToDeposit(Merchant m) {
-      deposit(m, ShipType.MERCHANT);
+      deposit(m);
    }
 
    public void wantToDeposit(Corsair c) {
-      deposit(c, ShipType.CORSAIR);
+      deposit(c);
    }
 
    public void wantToDeposit(Pirate p) {
-      deposit(p, ShipType.PIRATE);
+      deposit(p);
    }
 
    public void wantToAttack(Pirate p) {
@@ -90,9 +72,9 @@ public class GreatMediator extends Observable {
       attack(c, ShipType.PIRATE);
    }
 
-    public void deposit(Ship s, ShipType st) {
+    public void deposit(Ship s) {
         for (int i = 0; i < s.getSpeed(); i++) {
-            move(s, st.getDepositPosition());
+            move(s, s.getBase());
         }
     }
 
@@ -124,9 +106,7 @@ public class GreatMediator extends Observable {
                 } else { //Sinon on se dirige vers lui
                     move(s,shipToAttack.getPosition());
                 }
-            } else {
-                System.out.println("No ship to attack !");
-                //move to a random position
+            } else { //no ship to attack
                 move(s,s.getBase());
             }
         }

@@ -17,7 +17,7 @@ public abstract class RobbingShip extends Ship
    
    protected abstract int getMaxAttack();
 
-   public int getATTACK()
+   public int getAttack()
    {
       return ATTACK;
    }
