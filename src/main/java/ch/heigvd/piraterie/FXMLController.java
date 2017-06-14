@@ -18,6 +18,12 @@ import java.util.List;
 
 import static constants.PirateConstants.*;
 import static constants.PirateConstants.terrainType.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import mediators.*;
+import ships.Corsair;
+import ships.Merchant;
+import ships.Pirate;
 
 public class FXMLController implements Initializable {
     
@@ -27,7 +33,15 @@ public class FXMLController implements Initializable {
     @FXML
     private AnchorPane gamePane;
 
-
+    @FXML
+    private Button startButton;
+    
+    @FXML
+    private TextField merchantTextField;
+    @FXML
+    private TextField pirateTextField;
+    @FXML
+    private TextField corsairTextField;
 
     public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
     private GreatMediator greatMediator;
@@ -63,6 +77,62 @@ public class FXMLController implements Initializable {
                 }
             }
         }
+        
+        startButton.addActionListener ((ActionEvent e) ->
+        {
+           Random RANDOM = new Random(); //à changer avec le constant global
+           
+           //créer les sous-médiateurs
+           List<AbstractMediator> mediators = new ArrayList<>();
+           mediators.add(new Coast(1.5, 0.8));
+           mediators.add(new Ocean(3, 1));
+           mediators.add(new Fog(0.5, 0.2));
+           
+           //créer le mediateur
+           greatMediator = new GreatMediator(mediators);
+           
+           //ajoute les bateaux au médiateur
+           int nbrPirates = Integer.valueOf(pirateTextField.getText());
+           for (int i = 0; i < nbrPirates; i++)
+           {
+              double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
+              double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              greatMediator.add(new Pirate(greatMediator, new utils.Point((int)x, (int)y)));
+           }
+           
+           int nbrCorsair = Integer.valueOf(corsairTextField.getText());
+           for (int i = 0; i < nbrCorsair; i++)
+           {
+              double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
+              double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              greatMediator.add(new Corsair(greatMediator, new utils.Point((int)x, (int)y)));
+           }
+           
+           int nbrMerchants = Integer.valueOf(merchantTextField.getText());
+           for (int i = 0; i < nbrMerchants; i++)
+           {
+              double x = RANDOM.nextDouble() * PirateConstants.MAP_HEIGHT;
+              double y = RANDOM.nextDouble() * PirateConstants.MAP_WIDTH;
+              greatMediator.add(new Merchant(greatMediator, new utils.Point((int)x, (int)y)));
+           }
+           
+           //loop de la simulation
+           loop();
+           
+        });
+    }
+    
+    private void loop()
+    {
+       greatMediator.getShips().stream().forEach((ships) ->
+       {
+          ships.stream().forEach((ship) ->
+          {
+             ship.run();
+          });
+       });
+       
+       updateBoats();
     }
 
     public void updateBoats(){
