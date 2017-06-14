@@ -6,13 +6,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import mediators.GreatMediator;
+import ships.Ship;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.List;
 
 import static constants.PirateConstants.*;
 import static constants.PirateConstants.terrainType.*;
@@ -64,6 +66,9 @@ public class FXMLController implements Initializable {
     }
 
     public void updateBoats(){
+        for(List<Ship> l : greatMediator.getShips()){
+            
+        }
     }
 
 }
