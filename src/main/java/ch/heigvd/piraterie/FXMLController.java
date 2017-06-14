@@ -21,6 +21,8 @@ import static constants.PirateConstants.*;
 import static constants.PirateConstants.terrainType.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
@@ -148,6 +150,14 @@ public class FXMLController implements Initializable {
     {
        while (true)
        {
+          try
+          {
+             Thread.sleep(500);
+          } catch (InterruptedException ex)
+          {
+             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+          
           for (List<Ship> ships : greatMediator.getShips())
           {
              for (Iterator<Ship> iterator = ships.iterator(); iterator.hasNext();)
