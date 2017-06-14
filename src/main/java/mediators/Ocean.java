@@ -1,7 +1,7 @@
 package mediators;
 
 import ships.Ship;
-import utils.Point;
+import utils.Position;
 
 public class Ocean extends AbstractMediator
 {
@@ -9,10 +9,4 @@ public class Ocean extends AbstractMediator
    public Ocean(double speedZone, double sightModifier) {
       super(speedZone,sightModifier);
    }
-
-   @Override
-   void move(Ship s, Point destinationPosition) {
-
-   }
-   
 }

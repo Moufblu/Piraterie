@@ -2,57 +2,37 @@ package mediators;
 
 import java.util.ArrayList;
 import java.util.List;
-import ships.BlackBeard;
-import ships.Corsair;
-import ships.King;
-import ships.Merchant;
-import ships.Pirate;
-import ships.Ship;
+
+import ships.*;
+
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Optional;
-import utils.Point;
+import utils.Position;
 
 public class GreatMediator extends Observable {
 
    public enum ShipType {
-
-      CORSAIR {
-         public Point getDepositPosition() {
-            return new Point(0, 0);
-         }
-      }, MERCHANT {
-         public Point getDepositPosition() {
-            return new Point(0, 0);
-         }
-      }, PIRATE {
-         public Point getDepositPosition() {
-            return new Point(0, 0);
-         }
-      };
-
-      public abstract Point getDepositPosition();
-   }
+        CORSAIR , MERCHANT , PIRATE
+    }
 
    private List<AbstractMediator> mediators;
    private final List<List<Ship>> ships;
 
-   AbstractMediator[][] mediatorMatrix;
-
-   private BlackBeard blackBeard;
-   private King king;
+   private AbstractMediator[][] mediatorMatrix;
 
    public GreatMediator(List<AbstractMediator> mediators) {
       this.ships = new ArrayList<>();
-      
-      for (int i = 0; i < ShipType.values().length; i++)
+      this.mediators = mediators;
+      for (int i = 0; i < ShipType.values().length; i++){
          ships.add(new ArrayList<>());
+      }
    }
 
    public Optional<Ship> getClosest(Ship s, ShipType type) {
       return ships.get(type.ordinal())
               .stream()
-              .sorted((a, b) -> a.distanceTo(s) - b.distanceTo(s))
+              .sorted((a, b) -> (int) (a.distanceTo(s) - b.distanceTo(s)))
               .findFirst();
    }
 
@@ -72,23 +52,55 @@ public class GreatMediator extends Observable {
       ships.get(ShipType.CORSAIR.ordinal()).add(c);
    }
 
-   public void wantToDeposit(Merchant m) {
-      deposit(m, ShipType.MERCHANT);
+   public void wantToDeposit(Ship ship) {
+      deposit(ship);
    }
 
-   public void wantToDeposit(Corsair c) {
-      deposit(c, ShipType.CORSAIR);
+   public void wantToAttack(Pirate p) {
+      attack(p, ShipType.MERCHANT);
    }
 
-   public void wantToDeposit(Pirate p) {
-      deposit(p, ShipType.PIRATE);
+   public void wantToAttack(Corsair c) {
+      attack(c, ShipType.PIRATE);
    }
 
-   public void deposit(Ship s, ShipType st) {
-      Point p = s.getPosition();
+    public void deposit(Ship s) {
+        for (int i = 0; i < s.getSpeed(); i++) {
+            move(s, s.getBase());
+        }
+    }
 
-      for (int i = 0; i < s.getSpeed(); i++) {
-         mediatorMatrix[p.getX()][p.getY()].move(s, st.getDepositPosition());
-      }
-   }
+    //Tell the corresponding mediator to move ship in the direction of point
+    private void move(Ship ship, Position point) {
+        mediatorMatrix[ship.getPosition().getX()][ship.getPosition().getY()].move(ship, point);
+    }
+
+    /**
+     * @param s the ship attacking
+     * @param shipToAttack the ship to attack
+     * @return true if s and shipToAttack are in range
+     */
+    private boolean isInRange(RobbingShip s, Ship shipToAttack){
+        return mediatorMatrix[s.getPosition().getX()][s.getPosition().getY()].isInRange(s,shipToAttack);
+    }
+
+
+    private void attack(RobbingShip s, ShipType shipTypeToAttack) {
+        Optional<Ship> shipToAttackOpt = getClosest(s, shipTypeToAttack);
+        for (int i = 0; i < s.getSpeed(); i++) {
+            if (shipToAttackOpt.isPresent()) {
+                Ship shipToAttack = shipToAttackOpt.get();
+                //S'il est a porté, on l'attaque
+                if (isInRange(s,shipToAttack)) {
+                    //attaque une fois et passe son tour
+                    mediatorMatrix[s.getPosition().getX()][s.getPosition().getY()].attack(s,shipToAttack);
+                    break;
+                } else { //Sinon on se dirige vers lui
+                    move(s,shipToAttack.getPosition());
+                }
+            } else { //no ship to attack
+                move(s,s.getBase());
+            }
+        }
+    }
 }

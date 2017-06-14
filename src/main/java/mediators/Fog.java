@@ -1,7 +1,8 @@
 package mediators;
 
+import constants.PirateConstants;
 import ships.Ship;
-import utils.Point;
+import utils.Position;
 
 public class Fog extends AbstractMediator
 {
@@ -14,14 +15,18 @@ public class Fog extends AbstractMediator
    }
 
 
-   private Point nextPoint(Point p){
+   private Position nextPoint(Position p){
 
-      return new Point(p.getX(),p.getY());
+      return new Position(p.getX(),p.getY());
    }
 
    @Override
-   void move(Ship s, Point destinationPosition) {
-
+   public void move(Ship s, Position destination) {
+      
+      destination = new Position(PirateConstants.RANDOM.nextInt(PirateConstants.MAP_WIDTH),
+              PirateConstants.RANDOM.nextInt(PirateConstants.MAP_HEIGHT));
+      
+      super.move(s, destination);
    }
 
 }
