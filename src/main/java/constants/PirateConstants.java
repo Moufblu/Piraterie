@@ -1,6 +1,7 @@
 package constants;
 
 import java.awt.*;
+import java.util.Random;
 
 public final class PirateConstants {
     public static int MAP_WIDTH = 800;
@@ -12,6 +13,8 @@ public final class PirateConstants {
     public static final int END_COAST_COLOUR = new Color(255,106,0).getRGB();
     public static final int PIRATE_BAY_COLOUR = new Color(0,0,0).getRGB();
     public static final int FOG_COLOUR = new Color(255,255,255).getRGB();
+    public static final  Random RANDOM = new Random();
+
 
 
 }
