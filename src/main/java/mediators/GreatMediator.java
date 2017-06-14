@@ -3,12 +3,7 @@ package mediators;
 import java.util.ArrayList;
 import java.util.List;
 
-import ships.BlackBeard;
-import ships.Corsair;
-import ships.King;
-import ships.Merchant;
-import ships.Pirate;
-import ships.Ship;
+import ships.*;
 
 import java.util.LinkedList;
 import java.util.Observable;
@@ -104,12 +99,12 @@ public class GreatMediator extends Observable {
      * @param shipToAttack the ship to attack
      * @return true if s and shipToAttack are in range
      */
-    private boolean isInRange(Ship s, Ship shipToAttack){
+    private boolean isInRange(RobbingShip s, Ship shipToAttack){
         return mediatorMatrix[s.getPosition().getX()][s.getPosition().getY()].isInRange(s,shipToAttack);
     }
 
 
-    private void attack(Ship s, ShipType shipTypeToAttack) {
+    private void attack(RobbingShip s, ShipType shipTypeToAttack) {
         Optional<Ship> shipToAttackOpt = getClosest(s, shipTypeToAttack);
         for (int i = 0; i < s.getSpeed(); i++) {
             if (shipToAttackOpt.isPresent()) {

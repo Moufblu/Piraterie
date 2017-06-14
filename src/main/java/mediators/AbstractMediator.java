@@ -1,5 +1,6 @@
 package mediators;
 
+import ships.RobbingShip;
 import ships.Ship;
 import utils.Point;
 
@@ -9,7 +10,6 @@ public abstract class AbstractMediator {
 
     protected final double speedZone;
     protected final double sightModifier;
-    protected final static Random random = new Random();
 
     public AbstractMediator(double speedZone, double sightModifier) {
         this.speedZone = speedZone;
@@ -18,11 +18,18 @@ public abstract class AbstractMediator {
 
     abstract void move(Ship s, Point destinationPosition);
 
-    private Point getNextPointRandom(Ship s) {
-        double bool = random.nextInt(1);
-        double sign = random.nextInt(1)*-1;
-        double newX = s.getPosition().getX() + (bool * sign);
-        double newY = s.getPosition().getY() + (1-bool)*sign;
-        return new Point(newX, newY);
+    boolean isInRange(RobbingShip s, Ship shipToAttack) {
+        return (s.distanceTo(shipToAttack)*sightModifier < s.getRangeView());
     }
+    void attack(RobbingShip s, Ship shipToAttack){
+        shipToAttack.setHp(shipToAttack.getHp()-s.getATTACK());
+    }
+
+//    private Point getNextPointRandom(Ship s) {
+//        double bool = random.nextInt(1);
+//        double sign = random.nextInt(1)*-1;
+//        double newX = s.getPosition().getX() + (bool * sign);
+//        double newY = s.getPosition().getY() + (1-bool)*sign;
+//        return new Point(newX, newY);
+//    }
 }
