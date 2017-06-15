@@ -37,8 +37,6 @@ import ships.Pirate;
 public class FXMLController implements Initializable
 {
 
-   @FXML
-   private Label label;
 
    @FXML
    private AnchorPane gamePane;
@@ -54,7 +52,7 @@ public class FXMLController implements Initializable
    private TextField corsairTextField;
    @FXML
    private TextField treasureTextField;
-   
+
        @FXML
     private ProgressBar merchantProgressBar;
     @FXML
@@ -67,7 +65,7 @@ public class FXMLController implements Initializable
 
    public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
    private GreatMediator greatMediator;
-   
+   private int gameFPS = 30;
    private int treasureGoal;
 
    @Override
@@ -125,7 +123,7 @@ public class FXMLController implements Initializable
       {
          //créer les sous-médiateurs
          List<AbstractMediator> mediators = new ArrayList<>();
-         mediators.add(new Fog(0.2, 0.2));
+         mediators.add(new Fog(0.3, 0.3));
          mediators.add(new Ocean(1, 100));
          mediators.add(new Coast(0.7, 0.8));
 
@@ -158,7 +156,7 @@ public class FXMLController implements Initializable
             greatMediator.add(new Merchant(greatMediator, new utils.Position(x, y)));
          }
 
-         
+
          //loop de la simulation
          new Thread(() -> loop()).start();
 
@@ -182,7 +180,7 @@ public class FXMLController implements Initializable
       {
          try
          {
-            Thread.sleep(1000/30);
+            Thread.sleep(gameFPS);
          } catch (InterruptedException ex)
          {
             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,7 +201,7 @@ public class FXMLController implements Initializable
             }
 
          }
-         
+
          updateBoats();
       }
    }
@@ -220,10 +218,11 @@ public class FXMLController implements Initializable
          pirateProgressBar.setProgress(greatMediator.getPirateTreasure()/(double)treasureGoal);
          merchantProgressLabel.setText(Integer.toString(greatMediator.getMerchantTreasure()));
          pirateProgressLabel.setText(Integer.toString(greatMediator.getPirateTreasure()));
-         
-         
+
+
          List<List<Ship>> l = greatMediator.getShips();
          gamePane.getChildren().clear();
+
          for (int i = 0; i < l.size(); ++i)
          {
             for (Ship s : l.get(i))

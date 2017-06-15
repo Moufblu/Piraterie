@@ -50,6 +50,9 @@ public abstract class AbstractMediator
    void attack(RobbingShip s, Ship shipToAttack)
    {
       shipToAttack.setHp(shipToAttack.getHp() - s.getAttackPower());
+      if(shipToAttack.getHp() <= 0){
+         s.setTreasure(s.getTreasure()+shipToAttack.getCapacity());
+      }
    }
 
 }
