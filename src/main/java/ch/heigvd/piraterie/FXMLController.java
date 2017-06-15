@@ -3,8 +3,7 @@ package ch.heigvd.piraterie;
 import constants.PirateConstants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import mediators.GreatMediator;
@@ -27,8 +26,6 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import mediators.*;
 import ships.Corsair;
 import ships.Merchant;
@@ -53,7 +50,7 @@ public class FXMLController implements Initializable
    @FXML
    private TextField treasureTextField;
 
-       @FXML
+    @FXML
     private ProgressBar merchantProgressBar;
     @FXML
     private ProgressBar pirateProgressBar;
@@ -62,6 +59,11 @@ public class FXMLController implements Initializable
     private Label pirateProgressLabel;
     @FXML
     private Label merchantProgressLabel;
+    @FXML
+    private Label gameSpeedLabel;
+
+    @FXML
+    private Slider gameSpeedSlider;
 
    public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
    private GreatMediator greatMediator;
@@ -117,6 +119,23 @@ public class FXMLController implements Initializable
       acceptOnlyNumbers(corsairTextField);
       acceptOnlyNumbers(merchantTextField);
       acceptOnlyNumbers(treasureTextField);
+
+      pirateTextField.setText("0");
+      corsairTextField.setText("0");
+      merchantTextField.setText("0");
+      treasureTextField.setText("1000");
+      gameSpeedSlider.setMax(60);
+      gameSpeedSlider.setMin(5);
+      gameSpeedSlider.setValue(30);
+      gameSpeedLabel.setText("30 fps");
+      gameSpeedSlider.valueProperty().addListener(new ChangeListener<Number>() {
+         public void changed(ObservableValue<? extends Number> ov,
+                             Number old_val, Number new_val) {
+            gameSpeedLabel.setText(String.format("%d fps", new_val.intValue()));
+         }
+      });
+
+
 
         // On prépare les médiateurs et les bateaux avant de commencer la simulation
       startButton.setOnAction(e ->
