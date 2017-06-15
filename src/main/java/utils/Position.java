@@ -2,6 +2,8 @@ package utils;
 
 import constants.PirateConstants;
 
+import java.util.Objects;
+
 /**
  *
  */
@@ -58,6 +60,11 @@ public class Position {
    public boolean equals(Object obj)
    {
       return getX() == ((Position)obj).getX() && getY() == ((Position)obj).getY();
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(x, y);
    }
    
    

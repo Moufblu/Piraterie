@@ -20,7 +20,6 @@ public abstract class AbstractMediator
    {
       double signX = Math.signum(destination.getXDouble() - s.getPosition().getXDouble());
       double signY = Math.signum(destination.getYDouble() - s.getPosition().getYDouble());
-
       double angle = getAngle(s.getPosition(), destination);
       s.getPosition().move(Math.cos(angle) * speedZone, Math.sin(angle) * speedZone);
 
@@ -30,6 +29,7 @@ public abstract class AbstractMediator
          s.setPosition(destination);
       }
    }
+
 
    private double getAngle(Position source, Position destination)
    {
@@ -44,7 +44,7 @@ public abstract class AbstractMediator
 
    boolean isInRange(RobbingShip s, Ship shipToAttack)
    {
-      return (s.distanceTo(shipToAttack) * sightModifier < s.getRangeView());
+      return (s.distanceTo(shipToAttack) * sightModifier <= s.getRangeView());
    }
 
    void attack(RobbingShip s, Ship shipToAttack)
