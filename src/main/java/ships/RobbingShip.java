@@ -17,6 +17,7 @@ public abstract class RobbingShip extends Ship
 
    protected abstract int getMaxAttack();
 
+   @Override
    public int getTreasure()
    {
       return treasure;
