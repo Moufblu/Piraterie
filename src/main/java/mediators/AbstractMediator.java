@@ -25,8 +25,6 @@ public abstract class AbstractMediator
 
       s.getPosition().move(Math.cos(angle) * speedZone, Math.sin(angle) * speedZone);
 
-
-
       if (signX * s.getPosition().getXDouble() > signX * destination.getXDouble())
       {
          s.setPosition(new Position(destination.getXDouble(), s.getPosition().getYDouble()));
@@ -61,7 +59,7 @@ public abstract class AbstractMediator
    {
       shipToAttack.setHp(shipToAttack.getHp() - s.getAttackPower());
       if(shipToAttack.getHp() <= 0){
-         s.setTreasure(s.getTreasure()+shipToAttack.getCapacity());
+         s.setTreasure(Math.min(s.getTreasure() + shipToAttack.getTreasure(), s.getCapacity()));
       }
    }
 

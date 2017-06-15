@@ -8,11 +8,11 @@ import javafx.scene.paint.Color;
 
 public class Corsair extends RobbingShip {
 
-   private final static int BOUND_ATTACK = 10;
+   private final static int BOUND_ATTACK = 30;
    private final static int BOUND_HP_MAX = 100;
    private final static int BOUND_CAPACITY = 100;
-   private final static int BOUND_SPEED = 2;
-   private final static int BOUND_RANGE_VIEW = 3;
+   private final static int BOUND_SPEED = 5;
+   private final static int BOUND_RANGE_VIEW = 5;
 
    public Corsair(GreatMediator mediator, Position position) {
       super(mediator, position);

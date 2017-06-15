@@ -39,6 +39,12 @@ public abstract class Ship
    {
       if (min == max)
          return min;
+
+      if(min > max){
+         int temp = min;
+         min = max;
+         max = temp;
+      }
       
       return rand.nextInt(max - min) + min;
    }
@@ -89,4 +95,6 @@ public abstract class Ship
    public Position getSpawn(){
       return getBase();
    }
+
+   public abstract int getTreasure();
 }

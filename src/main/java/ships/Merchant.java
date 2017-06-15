@@ -49,6 +49,12 @@ public class Merchant extends Ship
    }
 
    @Override
+   public int getTreasure()
+   {
+      return CAPACITY;
+   }
+
+   @Override
    public Color getColor(){ return Color.ORANGE; }
 
    @Override

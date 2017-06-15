@@ -7,11 +7,11 @@ import javafx.scene.paint.Color;
 
 public class Pirate extends RobbingShip {
 
-   private final static int BOUND_ATTACK = 5;
+   private final static int BOUND_ATTACK = 15;
    private final static int BOUND_HP_MAX = 100;
    private final static int BOUND_CAPACITY = 100;
    private final static int BOUND_SPEED = 4;
-   private final static int BOUND_RANGE_VIEW = 5;
+   private final static int BOUND_RANGE_VIEW = 10;
 
    public Pirate(GreatMediator mediator, Position position) {
       super(mediator, position);

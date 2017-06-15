@@ -11,12 +11,13 @@ public abstract class RobbingShip extends Ship
    protected RobbingShip(GreatMediator mediator, Position position)
    {
       super(mediator, position);
-      ATTACK = randomBetween(1, getMaxAttack());
+      ATTACK = randomBetween(5, getMaxAttack());
       treasure = 0;
    }
 
    protected abstract int getMaxAttack();
 
+   @Override
    public int getTreasure()
    {
       return treasure;

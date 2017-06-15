@@ -75,7 +75,7 @@ public class GreatMediator {
       ships.get(ShipType.CORSAIR.ordinal()).add(c);
    }
 
-   public void wantToDeposit(Ship ship) {
+   public void wantToDeposit(Corsair ship) {
       deposit(ship);
    }
    
@@ -126,7 +126,7 @@ public class GreatMediator {
     }
 
 
-    private void attack(RobbingShip s, ShipType shipTypeToAttack) {
+    private void    attack(RobbingShip s, ShipType shipTypeToAttack) {
         Optional<Ship> shipToAttackOpt = getClosest(s, shipTypeToAttack);
         for (int i = 0; i < s.getSpeed(); i++) {
             if (shipToAttackOpt.isPresent()) {
