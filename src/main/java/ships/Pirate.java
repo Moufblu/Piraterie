@@ -48,7 +48,7 @@ public class Pirate extends RobbingShip {
 
    @Override
    public void run() {
-      if (treasure == CAPACITY) {
+      if (treasure >= CAPACITY) {
          mediator.wantToDeposit(this);
       } else {
          mediator.wantToAttack(this);
