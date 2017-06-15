@@ -90,6 +90,7 @@ public class GreatMediator extends Observable {
    public void wantToDeposit(Pirate ship) {
       if(deposit(ship)){
          pirateTreasure += ship.getTreasure();
+         ship.setTreasure(0);
       }
    }
 
