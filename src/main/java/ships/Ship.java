@@ -1,16 +1,17 @@
 package ships;
 
+import constants.PirateConstants;
 import javafx.scene.paint.Color;
-import java.util.Random;
+import constants.PirateConstants;
 import mediators.GreatMediator;
 import utils.Position;
 
 public abstract class Ship
 {
-   protected final int MAX_HP;
+   protected final int max_hp;
    protected int hp;
 
-   protected final int CAPACITY;
+   protected final int capacity;
    
    protected int speed;
    protected int rangeView;
@@ -18,13 +19,11 @@ public abstract class Ship
    
    protected final GreatMediator mediator;
    
-   private static final Random rand = new Random();
-   
    protected Ship(GreatMediator mediator, Position position)
    {
-      MAX_HP = randomBetween(1, getMaxHP());
-      hp = MAX_HP;
-      CAPACITY = randomBetween(1, getMaxCapacity());
+      max_hp = randomBetween(1, getMaxHP());
+      hp = max_hp;
+      capacity = randomBetween(1, getMaxCapacity());
       this.speed = randomBetween(1, getMaxSpeed());
       this.rangeView = randomBetween(1, getMaxRangeView());
       this.mediator = mediator;
@@ -40,7 +39,7 @@ public abstract class Ship
       if (min == max)
          return min;
       
-      return rand.nextInt(max - min) + min;
+      return PirateConstants.RANDOM.nextInt(max - min) + min;
    }
    
    public abstract void run();
@@ -66,7 +65,7 @@ public abstract class Ship
 
    public int getCapacity()
    {
-      return CAPACITY;
+      return capacity;
    }
    
    public Position getPosition()

@@ -43,12 +43,14 @@ public class Pirate extends RobbingShip {
    }
 
    @Override
-   public Color getColor(){ return Color.SLATEGRAY; }
+   public Color getColor(){ 
+      return Color.SLATEGRAY; 
+   }
 
 
    @Override
    public void run() {
-      if (treasure >= CAPACITY) {
+      if (treasure >= capacity) {
          mediator.wantToDeposit(this);
       } else {
          mediator.wantToAttack(this);

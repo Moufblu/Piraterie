@@ -5,13 +5,13 @@ import mediators.GreatMediator;
 
 public abstract class RobbingShip extends Ship
 {
-   protected final int ATTACK;
+   protected final int attack;
    protected int treasure;
    
    protected RobbingShip(GreatMediator mediator, Position position)
    {
       super(mediator, position);
-      ATTACK = randomBetween(1, getMaxAttack());
+      attack = randomBetween(1, getMaxAttack());
       treasure = 0;
    }
 
@@ -27,7 +27,7 @@ public abstract class RobbingShip extends Ship
    }
 
    public int getAttackPower(){
-      return ATTACK;
+      return attack;
    }
 
    @Override

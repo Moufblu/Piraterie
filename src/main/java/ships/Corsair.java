@@ -49,7 +49,7 @@ public class Corsair extends RobbingShip {
 
    @Override
    public void run() {
-      if (treasure == CAPACITY) {
+      if (treasure == capacity) {
          mediator.wantToDeposit(this);
       } else {
          mediator.wantToAttack(this);

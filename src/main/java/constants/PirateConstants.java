@@ -14,7 +14,4 @@ public final class PirateConstants {
     public static final int PIRATE_BAY_COLOUR = new Color(0,0,0).getRGB();
     public static final int FOG_COLOUR = new Color(255,255,255).getRGB();
     public static final  Random RANDOM = new Random();
-
-
-
 }
