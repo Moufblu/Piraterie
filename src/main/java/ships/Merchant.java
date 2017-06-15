@@ -59,7 +59,7 @@ public class Merchant extends Ship
    @Override
    public Position getSpawn()
    {
-      return new Position(0 ,PirateConstants.MAP_HEIGHT / 2);
+      return new Position(0 ,randomBetween(PirateConstants.MAP_HEIGHT/2-(PirateConstants.MAP_HEIGHT/4),PirateConstants.MAP_HEIGHT/2+(PirateConstants.MAP_HEIGHT/4)));
    }
    
    
