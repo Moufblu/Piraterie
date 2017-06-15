@@ -13,7 +13,7 @@ import utils.Position;
 
 import static constants.PirateConstants.terrainType.*;
 
-public class GreatMediator extends Observable {
+public class GreatMediator {
 
    public enum ShipType {
         CORSAIR , MERCHANT , PIRATE
