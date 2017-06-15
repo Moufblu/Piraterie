@@ -50,7 +50,7 @@ public class FXMLController implements Initializable
    @FXML
    private TextField treasureTextField;
 
-       @FXML
+    @FXML
     private ProgressBar merchantProgressBar;
     @FXML
     private ProgressBar pirateProgressBar;
@@ -59,6 +59,11 @@ public class FXMLController implements Initializable
     private Label pirateProgressLabel;
     @FXML
     private Label merchantProgressLabel;
+    @FXML
+    private Label gameSpeedLabel;
+
+    @FXML
+    private Slider gameSpeedSlider;
 
    public PirateConstants.terrainType[][] terrainMatrix = new PirateConstants.terrainType[PirateConstants.MAP_WIDTH][PirateConstants.MAP_HEIGHT];
    private GreatMediator greatMediator;
@@ -114,6 +119,24 @@ public class FXMLController implements Initializable
       acceptOnlyNumbers(corsairTextField);
       acceptOnlyNumbers(merchantTextField);
       acceptOnlyNumbers(treasureTextField);
+
+      pirateTextField.setText("0");
+      corsairTextField.setText("0");
+      merchantTextField.setText("0");
+      treasureTextField.setText("1000");
+      gameSpeedSlider.setMax(60);
+      gameSpeedSlider.setMin(5);
+      gameSpeedSlider.setValue(gameFPS);
+      gameSpeedLabel.setText(gameFPS +" fps");
+      gameSpeedSlider.valueProperty().addListener(new ChangeListener<Number>() {
+         public void changed(ObservableValue<? extends Number> ov,
+                             Number old_val, Number new_val) {
+            gameSpeedLabel.setText(String.format("%d fps", new_val.intValue()));
+            gameFPS = new_val.intValue();
+         }
+      });
+
+
 
         // On prépare les médiateurs et les bateaux avant de commencer la simulation
       startButton.setOnAction(e ->
@@ -196,7 +219,7 @@ public class FXMLController implements Initializable
       {
          try
          {
-            Thread.sleep(gameFPS);
+            Thread.sleep(1000/gameFPS);
          } catch (InterruptedException ex)
          {
             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
