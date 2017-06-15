@@ -229,13 +229,14 @@ public class FXMLController implements Initializable
             for (Iterator<Ship> iterator = ships.iterator(); iterator.hasNext();)
             {
                Ship ship = iterator.next();
-               if (ship.getHp() == 0)
+               if (ship.getHp() <= 0)
                {
                   iterator.remove();
                   continue;
                }
 
                ship.run();
+               updateBars();
                if(isGameEnded()){
                   return;
                }
@@ -246,6 +247,16 @@ public class FXMLController implements Initializable
       }
    }
 
+   public void updateBars(){
+      Platform.runLater(() ->
+      {
+         merchantProgressBar.setProgress(greatMediator.getMerchantTreasure()/(double)treasureGoal);
+         pirateProgressBar.setProgress(greatMediator.getPirateTreasure()/(double)treasureGoal);
+         merchantProgressLabel.setText(Integer.toString(greatMediator.getMerchantTreasure()));
+         pirateProgressLabel.setText(Integer.toString(greatMediator.getPirateTreasure()));
+      });
+   }
+   
    /**
     * Permet de mettre à jour la position des bateaux connus par le grand médiateur
     * sur l'affichage principal du jeu.
@@ -254,12 +265,6 @@ public class FXMLController implements Initializable
    {
       Platform.runLater(() ->
       {
-         merchantProgressBar.setProgress(greatMediator.getMerchantTreasure()/(double)treasureGoal);
-         pirateProgressBar.setProgress(greatMediator.getPirateTreasure()/(double)treasureGoal);
-         merchantProgressLabel.setText(Integer.toString(greatMediator.getMerchantTreasure()));
-         pirateProgressLabel.setText(Integer.toString(greatMediator.getPirateTreasure()));
-
-
          List<List<Ship>> l = greatMediator.getShips();
          gamePane.getChildren().clear();
 

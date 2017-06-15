@@ -22,7 +22,6 @@ public class GreatMediator extends Observable {
    private int merchantTreasure;
    private int pirateTreasure;
    
-   private List<AbstractMediator> mediators;
    private final List<List<Ship>> ships;
 
    private AbstractMediator[][] mediatorMatrix;
@@ -48,7 +47,6 @@ public class GreatMediator extends Observable {
            }
        }
       this.ships = new ArrayList<>();
-      this.mediators = mediators;
       for (int i = 0; i < ShipType.values().length; i++){
          ships.add(new ArrayList<>());
       }
