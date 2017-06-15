@@ -34,7 +34,6 @@ import ships.Pirate;
 public class FXMLController implements Initializable
 {
 
-
    @FXML
    private AnchorPane gamePane;
 
