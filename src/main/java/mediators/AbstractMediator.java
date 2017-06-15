@@ -20,14 +20,24 @@ public abstract class AbstractMediator
    {
       double signX = Math.signum(destination.getXDouble() - s.getPosition().getXDouble());
       double signY = Math.signum(destination.getYDouble() - s.getPosition().getYDouble());
+
       double angle = getAngle(s.getPosition(), destination);
+
       s.getPosition().move(Math.cos(angle) * speedZone, Math.sin(angle) * speedZone);
 
-      if (signX * s.getPosition().getXDouble() > signX * destination.getXDouble()
-              || signY * s.getPosition().getYDouble() > signY * destination.getYDouble())
+
+
+      if (signX * s.getPosition().getXDouble() > signX * destination.getXDouble())
       {
-         s.setPosition(destination);
+         s.setPosition(new Position(destination.getXDouble(), s.getPosition().getYDouble()));
       }
+
+      if (signY * s.getPosition().getYDouble() > signY * destination.getYDouble())
+      {
+         s.setPosition(new Position(s.getPosition().getXDouble(), destination.getYDouble()));
+      }
+
+
    }
 
 

@@ -69,6 +69,8 @@ public class FXMLController implements Initializable
    private int gameFPS = 30;
    private int treasureGoal;
 
+   private Object mutex = new Object();
+
    @Override
    public void initialize(URL url, ResourceBundle rb)
    {
@@ -228,7 +230,9 @@ public class FXMLController implements Initializable
          {
             for (Iterator<Ship> iterator = ships.iterator(); iterator.hasNext();)
             {
-               Ship ship = iterator.next();
+               synchronized (mutex) {
+                  Ship ship = iterator.next();
+               }
                if (ship.getHp() <= 0)
                {
                   iterator.remove();
