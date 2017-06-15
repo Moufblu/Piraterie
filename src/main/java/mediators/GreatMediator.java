@@ -103,7 +103,7 @@ public class GreatMediator {
     public boolean deposit(Ship s) {
         for (int i = 0; i < s.getSpeed(); i++) {
             move(s, s.getBase());
-            if(s.getPosition().equals(s.getBase())){
+            if(s.getPosition().distanceTo(s.getBase()) < s.getRangeView()){
                s.setPosition(s.getSpawn());
                return true;
             }
