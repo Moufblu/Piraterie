@@ -193,6 +193,25 @@ public class FXMLController implements Initializable
       });
    }
 
+   private boolean isGameEnded(){
+      boolean isGameEnded = false;
+      String winner = new String();
+      int collectedGold = 0;
+      if(greatMediator.getMerchantTreasure() >= treasureGoal){
+         winner = new String("Merchants");
+         collectedGold = greatMediator.getMerchantTreasure();
+         isGameEnded = true;
+      }else if(greatMediator.getPirateTreasure() >= treasureGoal){
+         winner = new String("Pirates");
+         collectedGold = greatMediator.getPirateTreasure();
+         isGameEnded = true;
+      }
+      if(isGameEnded) {
+         alert("Game ended", winner+" won !", "They have collected a treasure of " + collectedGold + " gold.", Alert.AlertType.INFORMATION);
+      }
+      return isGameEnded;
+   }
+
    private void loop()
    {
       while (true)
@@ -217,8 +236,10 @@ public class FXMLController implements Initializable
                }
 
                ship.run();
+               if(isGameEnded()){
+                  return;
+               }
             }
-
          }
 
          updateBoats();
@@ -251,8 +272,27 @@ public class FXMLController implements Initializable
                gamePane.getChildren().add(temp);
             }
          }
-      });
 
+      });
+   }
+
+   /**
+    * Lance une popup avec des informations
+    * @param title   le titre de la fenêtre
+    * @param header  La première ligne d'information
+    * @param content    le corps du message
+    * @param alertType  type d'alerte
+    */
+   public static void alert(String title, String header, String content, Alert.AlertType alertType) {
+
+      Platform.runLater(() -> {
+         Alert alert = new Alert(alertType);
+         alert.setTitle(title);
+         alert.setHeaderText(header);
+         alert.setContentText(content);
+
+         alert.showAndWait();
+      });
    }
 
 }
