@@ -198,11 +198,11 @@ public class FXMLController implements Initializable
       boolean isGameEnded = false;
       String winner = new String();
       int collectedGold = 0;
-      if(greatMediator.getMerchantTreasure() > treasureGoal){
+      if(greatMediator.getMerchantTreasure() >= treasureGoal){
          winner = new String("Merchants");
          collectedGold = greatMediator.getMerchantTreasure();
          isGameEnded = true;
-      }else if(greatMediator.getPirateTreasure() > treasureGoal){
+      }else if(greatMediator.getPirateTreasure() >= treasureGoal){
          winner = new String("Pirates");
          collectedGold = greatMediator.getPirateTreasure();
          isGameEnded = true;
