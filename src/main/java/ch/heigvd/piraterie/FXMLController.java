@@ -230,7 +230,7 @@ public class FXMLController implements Initializable
             for (Iterator<Ship> iterator = ships.iterator(); iterator.hasNext();)
             {
                Ship ship = iterator.next();
-               if (ship.getHp() == 0)
+               if (ship.getHp() <= 0)
                {
                   iterator.remove();
                   continue;
