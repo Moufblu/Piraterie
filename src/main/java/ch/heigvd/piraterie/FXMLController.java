@@ -126,12 +126,13 @@ public class FXMLController implements Initializable
       treasureTextField.setText("1000");
       gameSpeedSlider.setMax(60);
       gameSpeedSlider.setMin(5);
-      gameSpeedSlider.setValue(30);
-      gameSpeedLabel.setText("30 fps");
+      gameSpeedSlider.setValue(gameFPS);
+      gameSpeedLabel.setText(gameFPS +" fps");
       gameSpeedSlider.valueProperty().addListener(new ChangeListener<Number>() {
          public void changed(ObservableValue<? extends Number> ov,
                              Number old_val, Number new_val) {
             gameSpeedLabel.setText(String.format("%d fps", new_val.intValue()));
+            gameFPS = new_val.intValue();
          }
       });
 
@@ -199,7 +200,7 @@ public class FXMLController implements Initializable
       {
          try
          {
-            Thread.sleep(gameFPS);
+            Thread.sleep(1000/gameFPS);
          } catch (InterruptedException ex)
          {
             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
